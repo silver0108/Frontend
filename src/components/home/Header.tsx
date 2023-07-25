@@ -1,11 +1,12 @@
-import { StarIcon } from '../../assets/icon';
+import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
 
 export default function Header() {
     // icon import 오류 해결 필요
   return (
     <St.HeaderWrapper>
-      <St.Header> 모아모아 </St.Header>
+        <St.StarIc />
+        <St.Header> 모아모아 </St.Header>
     </St.HeaderWrapper>
   );
 }

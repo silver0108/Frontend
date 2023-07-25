@@ -1,4 +1,5 @@
 import Header from '../components/home/Header';
+import Category from '../components/home/Category';
 import {styled} from 'styled-components';
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
     return (
       <St.HomeWrapper>
         <Header />
-        <h1> 안녕</h1>
+        <Category />
       </St.HomeWrapper>
     );
 }
