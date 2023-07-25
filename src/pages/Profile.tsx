@@ -69,15 +69,14 @@ const Profile = () => {
 
       <St.ProfileContainer>
         <ProfileInfo profile={profileData} writing={writingData}></ProfileInfo>
-        {/* <ProfileInfo {...profileData} {...writingData}></ProfileInfo> */}
         <St.ProfileContentsButtonContainer>
           <St.ProfileContentsButton 
-            active={activeButton === 0}
+            active={(activeButton === 0).toString()}
             onClick={() => handleButtonClick(0)}>
             수업어필
           </St.ProfileContentsButton>
           <St.ProfileContentsButton 
-            active={activeButton === 1}
+            active={(activeButton === 1).toString()}
             onClick={() => handleButtonClick(1)}>
             후기 ({reviewData.length})
             </St.ProfileContentsButton>
@@ -119,16 +118,16 @@ const St = {
     display: flex;
     justify-content: space-between;
   `,
-  ProfileContentsButton: styled.button<{active: boolean}>`
+  ProfileContentsButton: styled.button<{active: string}>`
     flex: 1;
 
     padding: 1rem;
 
     border: none;
-    border-bottom: 0.2rem solid ${(props) => (props.active ? 'black' : '#ccc')};
+    border-bottom: 0.2rem solid ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
     
     background-color: white;
-    color: ${(props) => (props.active ? 'black' : '#ccc')};
+    color: ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
     
     font-size: 1.1rem;
     font-weight: bold;
