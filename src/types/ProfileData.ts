@@ -1,4 +1,4 @@
-import { PriceProps, WritingInfoProps } from "./WritingData";
+import { WritingInfoProps } from "./WritingData";
 
 export interface ProfileProps {
   profile: ProfileInfoProps;
