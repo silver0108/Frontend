@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from "styled-components";
 import Modal from './common/Modal';
 import { ProfileProps } from '../types/ProfileData';
@@ -26,27 +26,27 @@ const ParticipationInfo = (props:ProfileProps) => {
   }
 
   return (
-    <ParticipationInfoWrapper justifyContentStyle={justifyContentStyle} >
+    <ParticipationInfoWrapper justifycontentstyle={ justifyContentStyle } >
       {count <= personnel ? (
         <>
-      <St.ParticipationInfoContainer>
-        <div>
-          현재 참여현황 ({count}/4)
-        </div>
-        <div style={{ fontSize: "1.5rem", fontWeight: "bold"}}>
-          {price}원
-        </div>
-      </St.ParticipationInfoContainer>
-      <St.ParticipationButtonContainer>
-        <StChatButton>채팅하기</StChatButton>
-        <StApplicationButton onClick={openModal}>신청하기</StApplicationButton>
-        <Modal isOpen={modalOpen}>
-          <h2>수업이 신청되었습니다!</h2>
-          <div style={{marginBottom:"30px"}}>{nickname} 선생님 수업 신청 완료</div>
-          <StConfirmButton onClick={closeModal}>확인</StConfirmButton>
-        </Modal>
-      </St.ParticipationButtonContainer>
-        </>
+          <St.ParticipationInfoContainer>
+            <div>
+              현재 참여현황 ({count}/4)
+            </div>
+            <div style={{ fontSize: "1.5rem", fontWeight: "bold"}}>
+              {price}원
+            </div>
+          </St.ParticipationInfoContainer>
+          <St.ParticipationButtonContainer>
+            <StChatButton>채팅하기</StChatButton>
+            <StApplicationButton onClick={openModal}>신청하기</StApplicationButton>
+            <Modal isOpen={modalOpen}>
+              <h2>수업이 신청되었습니다!</h2>
+              <div style={{marginBottom:"30px"}}>{nickname} 선생님 수업 신청 완료</div>
+              <StConfirmButton onClick={closeModal}>확인</StConfirmButton>
+            </Modal>
+          </St.ParticipationButtonContainer>
+            </>
       ):(
         <h3>신청이 마감되었습니다.</h3>
       )}
@@ -56,11 +56,11 @@ const ParticipationInfo = (props:ProfileProps) => {
 
 export default ParticipationInfo;
 
-const ParticipationInfoWrapper = styled.div<{ justifyContentStyle: string }>`
+const ParticipationInfoWrapper = styled.div<{ justifycontentstyle: string }>`
   height: 4rem;
 
   display: flex;
-  justify-content: ${(props) => props.justifyContentStyle};
+  justify-content: ${(props) => props.justifycontentstyle};
   align-items: center;
   flex-shrink: 0;
 

@@ -7,7 +7,7 @@ const Modal = (props:ModalProps) => {
   if(!isOpen) return null;
 
   return (
-    <ModalWrapper isOpen={isOpen}>
+    <ModalWrapper isopen={isOpen}>
       <ModalContainer>
         {children}
       </ModalContainer>
@@ -17,7 +17,7 @@ const Modal = (props:ModalProps) => {
 
 export default Modal;
 
-const ModalWrapper = styled.div<{ isOpen: boolean }>`
+const ModalWrapper = styled.div<{ isopen: boolean }>`
   width: 100%;
   height: 100%;  
 
@@ -29,7 +29,7 @@ const ModalWrapper = styled.div<{ isOpen: boolean }>`
   justify-content: center;
   align-items: center;
 
-  background-color: ${(props) => (props.isOpen ? 'rgba(0, 0, 0, 0.5)' : 'transparent')};
+  background-color: ${(props) => (props.isopen ? 'rgba(0, 0, 0, 0.5)' : 'transparent')};
 `;
 
 const ModalContainer = styled.div`
