@@ -1,6 +1,17 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const Writing = () => {
+
+  const [ num, setNum ] = useState<number>(0);
+
+  const handleIncreaseButton = () => {
+    setNum(num < 10 ? (num) => num + 1 : 10);
+  }
+
+  const handleDecreaseButton = () => {
+    setNum(num > 0 ? (num) => num - 1 : 0);
+  }
   
   return (
     <WritingWrapper>
@@ -19,28 +30,21 @@ const Writing = () => {
             </St.WritingInput>
           </St.WritingSection>
 
-          <St.WritingSection style={{ flexDirection: "row", justifyContent: "space-between", alignItems:"center"}}>
+          <St.WritingSection style={{ flexDirection: "row", justifyContent: "space-between", alignItems:"center" }}>
             <St.WritingHeader>
               최대 정원을 정해주세요.
             </St.WritingHeader>
-            <div style={{ 
-              display:"flex", 
-              border: "0.01rem solid #E6E6E6",
-              backgroundColor: "white",
-              padding: "0.2rem 0.5rem",
-              alignItems:"center",
-              borderRadius:"1rem"
-              }}>
-              <St.CountButton>
+            <St.WritingPersonnelContainer>
+              <St.CountButton onClick={handleDecreaseButton}>
                 -
               </St.CountButton>
               <div style={{margin:"0 0.6rem"}}>
-                3
+                {num}
               </div>
-              <St.CountButton>
+              <St.CountButton onClick={handleIncreaseButton}>
                 +
               </St.CountButton>
-            </div>
+            </St.WritingPersonnelContainer>
           </St.WritingSection>
 
           <St.WritingSection>
@@ -49,39 +53,25 @@ const Writing = () => {
             </St.WritingHeader>
             <div>
               <St.RadioBoxInput/>
-              <St.RadioBoxLabel>
                 <St.RadioBoxSpan>
                   운동  
                 </St.RadioBoxSpan>  
-              </St.RadioBoxLabel>
-
               <St.RadioBoxInput/>
-              <St.RadioBoxLabel >
                 <St.RadioBoxSpan>
                   언어  
                 </St.RadioBoxSpan>
-              </St.RadioBoxLabel>
-
               <St.RadioBoxInput/>
-              <St.RadioBoxLabel>
                 <St.RadioBoxSpan>
                   음악
                 </St.RadioBoxSpan>  
-              </St.RadioBoxLabel>
-
               <St.RadioBoxInput/>
-              <St.RadioBoxLabel >
                 <St.RadioBoxSpan>
                   미술
                 </St.RadioBoxSpan>
-              </St.RadioBoxLabel>
-
               <St.RadioBoxInput/>
-              <St.RadioBoxLabel>
                 <St.RadioBoxSpan>
                   기타
                 </St.RadioBoxSpan>  
-              </St.RadioBoxLabel>
             </div>
           </St.WritingSection>
 
@@ -167,6 +157,17 @@ const St = {
     // font-size: 1.11rem;
     font-weight: bold;
   `,
+  WritingPersonnelContainer: styled.div`
+    padding: 0.2rem 0.5rem;
+    
+    display: flex; 
+    align-items: center;
+
+    border: 0.01rem solid #E6E6E6;
+    border-radius: 1rem;
+    
+    background-color: white;
+  `,
   WritingInput: styled.input`
     height: 3rem;
     padding: 0 1rem;
@@ -208,19 +209,14 @@ const St = {
 
     clip: rect(0, 0, 0, 0);
 
-    &:checked + label {
-      background-color: violet;
-      color: white;
-    }
+    // &:checked + label {
+    //   background-color: violet;
+    //   color: white;
+    // }
   `,
 
-  RadioBoxLabel: styled.label`
-    padding: 0 0.5rem;
-
-    cursor: pointer;
-  `,
-
-  RadioBoxSpan: styled.span`
+  RadioBoxSpan: styled.button`
+    margin: 0 0.5rem;
     padding: 0.3rem 0.7rem;
     
     border: 0.1rem solid #E6E6E6;
