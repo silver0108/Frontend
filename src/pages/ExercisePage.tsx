@@ -14,6 +14,7 @@ interface LessonData {
 
 export default function ExercisePage() {
     // api get 해올 부분
+    // merge 오류 해결
     const exerciseList: LessonData[] = [
         {
             lessonImg: <LessonImg/>,
