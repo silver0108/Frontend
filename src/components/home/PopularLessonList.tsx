@@ -2,7 +2,7 @@ import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
 import { LessonImg } from "../../assets";
 import Lesson from './Lesson';
-
+import RoundButton from '../common/RoundButton';
 interface LessonData {
     lessonImg: JSX.Element;
     lessonComment: string;
@@ -49,6 +49,7 @@ export default function PopularLessonList() {
             {popularList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
             ))}
+            <RoundButton buttonMessage = {"급 인기 상승중인 모아 더 보러가기"}/>
         </St.PopularLessonListWrapper>
     );
 }

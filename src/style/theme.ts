@@ -4,7 +4,7 @@ const colors = {
   // 메인컬러
   Main: "#FBD262",
   SUB_1: "#E63636",
-  SUB_2: "FB6262",
+  SUB_2: "#FBD262",
 };
 
 export type ColorsTypes = typeof colors;
