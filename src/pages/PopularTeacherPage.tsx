@@ -1,7 +1,7 @@
-import {styled} from 'styled-components';
-
 import Lesson from '../components/home/Lesson';
 import { LessonImg } from "../assets";
+import TopBar from '../components/common/TopBar';
+import {styled} from 'styled-components';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -68,6 +68,8 @@ export default function PopularTeacherPage() {
     
     return (
       <St.PopularTeacherWrapper>
+        
+        <TopBar message = {"인기 급상승 수업들"} />
         {teacerList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}

@@ -1,7 +1,7 @@
-import {styled} from 'styled-components';
-
 import Lesson from '../components/home/Lesson';
 import { LessonImg } from "../assets";
+import TopBar from '../components/common/TopBar';
+import {styled} from 'styled-components';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -67,6 +67,8 @@ export default function LanguagePage() {
     ]
     return (
       <St.LanguageWrapper>
+        
+        <TopBar message = {"언어 카테고리"} />
         {languageList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}

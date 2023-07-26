@@ -1,8 +1,9 @@
+import Lesson from './Lesson';
+import { LessonImg } from "../../assets";
+import RoundButton from '../common/RoundButton';
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
-import { LessonImg } from "../../assets";
-import Lesson from './Lesson';
-import RoundButton from '../common/RoundButton';
+
 interface LessonData {
     lessonImg: JSX.Element;
     lessonComment: string;

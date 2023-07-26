@@ -1,7 +1,7 @@
-import {styled} from 'styled-components';
-
 import Lesson from '../components/home/Lesson';
 import { LessonImg } from "../assets";
+import TopBar from '../components/common/TopBar';
+import {styled} from 'styled-components';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -68,6 +68,7 @@ export default function RecommendedTeacherPage() {
     
     return (
       <St.RecommendedTeacherWrapper>
+        <TopBar message = {"추천이 많은 선생님들"} />
         {teacerList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}

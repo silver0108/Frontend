@@ -1,7 +1,7 @@
-import {styled} from 'styled-components';
-
 import Lesson from '../components/home/Lesson';
 import { LessonImg } from "../assets";
+import TopBar from '../components/common/TopBar';
+import {styled} from 'styled-components';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -66,6 +66,7 @@ export default function ExercisePage() {
     ]
     return (
       <St.ExerciseWrapper>
+        <TopBar message = {"운동 카테고리"} />
         {exerciseList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}

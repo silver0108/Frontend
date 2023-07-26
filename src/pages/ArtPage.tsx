@@ -1,7 +1,7 @@
-import {styled} from 'styled-components';
-
 import Lesson from '../components/home/Lesson';
 import { LessonImg } from "../assets";
+import TopBar from '../components/common/TopBar';
+import {styled} from 'styled-components';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -66,6 +66,8 @@ export default function ArtPage() {
     ]
     return (
       <St.ArtWrapper>
+
+        <TopBar message = {"미술 카테고리"} />
         {artList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}

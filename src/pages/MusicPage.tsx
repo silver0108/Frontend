@@ -1,7 +1,7 @@
-import {styled} from 'styled-components';
-
 import Lesson from '../components/home/Lesson';
 import { LessonImg } from "../assets";
+import TopBar from '../components/common/TopBar';
+import {styled} from 'styled-components';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -68,6 +68,7 @@ export default function MusicPage() {
     
     return (
       <St.MusicWrapper>
+        <TopBar message = {"음악 카테고리"} />
         {musicList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}
