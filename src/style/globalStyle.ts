@@ -37,8 +37,8 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1;
 
     width:32rem;
-    /* height: 56.8rem; */
-    height: 100vh;
+    /* height: 100rem; */
+    height: 100rem;
     /* 임시구현 선 */
     border:1px solid black;
   }

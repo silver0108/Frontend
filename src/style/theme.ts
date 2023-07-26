@@ -4,7 +4,7 @@ const colors = {
   // 메인컬러
   Main: "#FBD262",
   SUB_1: "#E63636",
-  SUB_2: "FB6262",
+  SUB_2: "#FBD262",
 };
 
 export type ColorsTypes = typeof colors;
@@ -36,7 +36,9 @@ const fonts = {
   body03: FONT({ weight: 700, size: 1.4, lineHeight: 1.6, letterSpacing: 0 }),
   body04: FONT({ weight: 500, size: 1.4, lineHeight: 1.6, letterSpacing: 0 }),
   body05: FONT({ weight: 400, size: 1.2, lineHeight: 1.6, letterSpacing: 0 }),
-  body06: FONT({ weight: 500, size: 1.2, lineHeight: 1.4, letterSpacing: 0 }),
+  body06: FONT({ weight: 700, size: 1.2, lineHeight: 1.4, letterSpacing: 0 }),
+  body07: FONT({ weight: 700, size: 1.0, lineHeight: 1.4, letterSpacing: 0 }),
+  body08: FONT({ weight: 500, size: 0.8, lineHeight: 1.4, letterSpacing: 0 }),
 };
 
 export type FontsTypes = typeof fonts;
