@@ -32,11 +32,18 @@ const St = {
     width: 3.9rem;
     `,
 
-    TeacherName: styled.span`
+    TeacherName: styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
     ${({ theme }) => theme.fonts.body07};
     `,
 
-    TeacherScore: styled.span`
+    TeacherScore: styled.div`
+    display: flex;
+    justify-content: center;
+    margin-left: 1rem;
     ${({ theme }) => theme.fonts.body08};
     `,
 

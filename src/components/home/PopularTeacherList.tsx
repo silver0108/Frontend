@@ -29,16 +29,28 @@ export default function PopularTeacherList() {
             teacherName: "상훈쌤",
             teacherScore: 4.5,
         },
+        {
+            teacherImg: <TeacherImg/>,
+            teacherName: "상훈쌤",
+            teacherScore: 4.5,
+        },
+        {
+            teacherImg: <TeacherImg/>,
+            teacherName: "상훈쌤",
+            teacherScore: 4.5,
+        },
     ]
     
     
     return (
         <St.PopularLessonListWrapper>
-            <St.Header> 지금 인기가 많아지고 있어요! </St.Header>
-            {teacherList.map((teacher, idx) => (
-            <TeacherProfile key={idx} {...teacher} />
-            ))}
-            <RoundButton buttonMessage = {"급 인기 상승중인 모아 더 보러가기"}/>
+            <St.Header> 100점 선생님들을 소개합니다! </St.Header>
+            <St.TeacherLists>
+                {teacherList.map((teacher, idx) => (
+                <TeacherProfile key={idx} {...teacher} />
+                ))}
+            </St.TeacherLists>
+            <RoundButton buttonMessage = {"다른 선생님들도 보러가기"}/>
         </St.PopularLessonListWrapper>
     );
 }
@@ -56,5 +68,11 @@ const St = {
       color: black;
       margin-left: 1.6rem;
       margin-bottom: 2rem;
+    `,
+    
+    TeacherLists: styled.div`
+        display: flex;
+        gap: 2rem;
+        margin-left: 2rem;
     `,
   };
