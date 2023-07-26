@@ -56,19 +56,15 @@ export default function PopularLessonList() {
 const St = {
     PopularLessonListWrapper: styled.section`
       display: flex;
+      flex-direction: column;
       width: 37.5rem;
+      margin-top: 3rem;
     `,
-
     
     Header: styled.header`
-      ${({ theme }) => theme.fonts.title02};
+      ${({ theme }) => theme.fonts.body03};
       color: black;
+      margin-left: 1.6rem;
+      margin-bottom: 2rem;
     `,
-    
-    Teacher: styled.div`
-    
-    `,
-
-    Distance: styled.h3`
-    `
   };

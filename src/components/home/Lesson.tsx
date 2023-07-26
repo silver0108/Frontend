@@ -19,7 +19,7 @@ export default function Lesson(props: LessonProps) {
         <St.LessonWrapper>
             <St.LessonImg> {lessonImg} </St.LessonImg>
             <St.LessonExplanation> 
-                <St.Header> 모아모아 </St.Header>
+                <St.Header> {lessonComment} <br/> {lessonExplain} </St.Header>
                 <St.Teacher> {lessonTeacher} {lessonScore} </St.Teacher> 
                 <St.Distance> {lessonDistance} </St.Distance> 
             </St.LessonExplanation>
@@ -30,29 +30,44 @@ export default function Lesson(props: LessonProps) {
 const St = {
     LessonWrapper: styled.section`
       display: flex;
-      width: 37.5rem;
-      height: 6.4rem;
-      padding: 1.5rem;
+      width: 32.5rem;
+      height: 6rem;
+      padding: 0.9rem 0rem 0.9rem 0rem;
+      margin-left: 2rem;
+      margin-bottom: 2rem;
     `,
 
     LessonImg : styled.article`
-    width: 8rem;
-    height: 8rem;
+        display: flex;
+        width: 6rem;
+        height: 6rem;
+        margin-right: 0.8rem;
     `,
 
     LessonExplanation: styled.div`
+        display: flex;
+        flex-direction: column;
     
+        margin-top: 0.4rem;
+
+        ${({ theme }) => theme.fonts.body05};
+        color: black;
     `,
     
     Header: styled.header`
-      ${({ theme }) => theme.fonts.title02};
-      color: black;
+        ${({ theme }) => theme.fonts.body06};
+        color: black;
     `,
     
     Teacher: styled.div`
-    
+        margin-top: 0.2rem;
+        ${({ theme }) => theme.fonts.body07};
+        color: black;
     `,
 
     Distance: styled.h3`
+        margin-top: 0.2rem;
+        ${({ theme }) => theme.fonts.body07};
+        color: ${({ theme }) => theme.colors.SUB_1}; 
     `
   };
