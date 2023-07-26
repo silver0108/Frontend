@@ -1,13 +1,13 @@
 <svg width="63" height="40" viewBox="0 0 63 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect x="0.400024" width="62.2" height="40" rx="12" fill="white"/>
 <mask id="mask0_172_2177" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="12" y="0" width="40" height="40">
-<rect x="12" width="40" height="40" fill="url(#pattern0)"/>
+<rect x="12" width="40" height="40" fill="url(#pattern1)"/>
 </mask>
 <g mask="url(#mask0_172_2177)">
 <rect x="10" y="-1" width="44" height="42" fill="#B24AE2"/>
 </g>
 <defs>
-<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_172_2177" transform="scale(0.0104167)"/>
 </pattern>
 <image id="image0_172_2177" width="96" height="96" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAADkUlEQVR4nO3cO2gUURTG8X+MSUCQmEojahFFUVCr2AmJCIqohaLYaBBEW1+olQYLjYiIleADfLRWKoISsEkqX6hgpWCTGAWNYiFJ0FjcFePNJjsze3bv3fH7wRCyyZw9M2d37p3ZswMiIiIiIiIiIiIiIiIikkwjcA4YBMZzugwAPYVtjU4P4XdQtZYeo31GnVUg3Cu/1TBezIYw2tYZFkEKxg1jxe6nVSDLAtw2jBW7KLe1EXdsHCD8Mfq/HIRFJHaWsz5JqA04A7wHRoFrQH3IhP4HDcB24CFuyugPpjvDpfavmaETMNYG7AP2AvOm+b/l1UmntDwUoB7oBPYD20h2eIlmLLAuQCuwBWgxjgvuQp9vM3AZWGAQ/3iC/xkG7gEfDJ7P3BpcgpU6CfK1ASMZY3UXiZd03S9Ae7pdMzXLSxEXgTmG8UrZSpgz0hbctpqwLMBKw1hJVLPYvlVWgSwL8NowVqV9LXP9VyZZYFuAg7gxIHajwP0y1h8GDhnlYjoLegKswM2CFhvGtfQJOAC8LfK3YrMs3zvcLGjIMqla1U3ymctT3HnCrBCJTicPJ2JTGQHuApeA/sC5TCmvBbgAnAU+h06klDwW4AFwNHQSSVnOgmLxLHQCaeSxAL9CJ5BGHgtQUywLUOnWxHJE2xVhOQifBo4ZxovRfP5etj5hEdDyHbDHMFbsuqwCqTUxG7UmEvZjRbNttRwDThZ+7sYdKyttdhWewzeI2/mnAjx3dG6R/OPGaNXqeUAD0BE6CQu1WIA63IW2haETsVBLBajD9f/0AkcC52Im9quhrcB6YB2wgWRfC6qpa0GxFmAT7lXeQfp36XfzbCootgI0ATeAXWXE+GaTSnWEbE18BLzwHjtPeTsfJhegAThcZsw/ctWa2OmtP5fsrYYTl9Ve3CUGMSvWmmipn3Qb4g+oO1KuX2z5gXvFT7TRIK6/9GXaQ0WEak0cx/XoTLTIIIeXwJj32FKDuL5ctCb6VxQtPuS4U+SxtQZxfWatiZbaccfHpG9jv7m2K8W6xZYxJn8rph7XmhLtGBCyNbHJ+70XdxKV9V15lcktgy2Fx63kvjXxOtlelQNAc4B8c6cZeE66nf8Rw0FRXBFu4g5HpXb+YyozyxFgGe4L1n24M88R3IneG+AKbn4vIiJx0F0TA9NdEzPQXROz0V0TA1NrYmBRbqvumigiIiIiIiIiIiIiIiIint/S798C631CvAAAAABJRU5ErkJggg=="/>
