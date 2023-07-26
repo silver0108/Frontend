@@ -8,6 +8,8 @@ import LanguagePage from "./pages/LanguagePage";
 import MusicPage from "./pages/MusicPage";
 import PopularTeacherPage from "./pages/PopularTeacherPage";
 import RecommendedTeacherPage from "./pages/RecommendedTeacherPage";
+import Profile from "./pages/Profile";
+import Writing from "./pages/Writing";
 
 export default function Router() {
     return (
@@ -21,6 +23,8 @@ export default function Router() {
           <Route path="/close-distance" element={<CloseDistanceTeacherPage />} />
           <Route path="/recommended-teacher" element={<RecommendedTeacherPage />} />
           <Route path="/popular-teacher" element={<PopularTeacherPage />} />
+          <Route path="/Profile" element={<Profile/>} />
+          <Route path="/writing" element={<Writing/>} />
         </Routes>
       </BrowserRouter>
     );
