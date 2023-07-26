@@ -7,3 +7,4 @@ export { ReactComponent as CategoryEtcIcon } from "./icon/categoryEtcIcon.svg";
 export { ReactComponent as CategoryMusicIcon } from "./icon/categoryMusicIcon.svg";
 export { ReactComponent as LessonImg } from "./image/lessonImg.svg";
 export { ReactComponent as TeacherImg } from "./image/teacherImg.svg";
+export { ReactComponent as BackBtnIcon } from './icon/backBtnIcon.svg';

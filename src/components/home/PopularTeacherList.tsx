@@ -1,8 +1,9 @@
+import RoundButton from '../common/RoundButton';
 import { StarIcon } from '../../assets';
-import { styled } from 'styled-components';
 import { TeacherImg } from "../../assets";
 import TeacherProfile from '../common/TeacherProfile';
-import RoundButton from '../common/RoundButton';
+import { styled } from 'styled-components';
+import { useNavigate } from "react-router-dom";
 
 interface TeacherData {
     teacherImg: JSX.Element;
@@ -12,6 +13,12 @@ interface TeacherData {
 
 export default function PopularTeacherList() {
 
+    const navigate = useNavigate();
+  
+    function MoveToCategory() {
+        // category 로 이동하는 로직
+        navigate("/recommended-teacher");
+    }
     // data 받아오기
     const teacherList: TeacherData[] = [
         {
@@ -50,7 +57,7 @@ export default function PopularTeacherList() {
                 <TeacherProfile key={idx} {...teacher} />
                 ))}
             </St.TeacherLists>
-            <RoundButton buttonMessage = {"다른 선생님들도 보러가기"}/>
+            <RoundButton buttonMessage = {"다른 선생님들도 보러가기"}   onClick={()=>MoveToCategory()}/>
         </St.PopularLessonListWrapper>
     );
 }

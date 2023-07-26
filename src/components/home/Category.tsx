@@ -1,18 +1,25 @@
 import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon } from "../../assets";
 
 import { styled } from 'styled-components';
+import { useNavigate } from "react-router-dom";
+
+type CategoryInfo = [string, JSX.Element, string];
 
 export default function Category() {
-  function MoveToCategory() {
+
+  const navigate = useNavigate();
+  
+  function MoveToCategory(path: string) {
     // category 로 이동하는 로직
+    navigate(path);
   }
 
-  const categories = [
-    ['언어', <CategoryLanguageIcon />],
-    ['운동', <CategoryExerciseIcon />],
-    ['음악', <CategoryMusicIcon />],
-    ['미술', <CategoryArtIcon />],
-    ['기타', <CategoryEtcIcon />]
+  const categories: CategoryInfo[] = [
+    ['언어', <CategoryLanguageIcon />, "/language"],
+    ['운동', <CategoryExerciseIcon />, "/exercise"],
+    ['음악', <CategoryMusicIcon />, "/music"],
+    ['미술', <CategoryArtIcon />, "/art"],
+    ['기타', <CategoryEtcIcon />, "/etc"]
   ];
 
   return (
@@ -21,7 +28,7 @@ export default function Category() {
       
       <St.CategoryList>
         {categories.map((category, index) => (
-          <St.Category key={index}>
+          <St.Category key={index} onClick={()=>MoveToCategory(category[2])}>
             <St.CategoryImg>{category[1]}</St.CategoryImg>
             <St.CategoryName>{category[0]}</St.CategoryName>
           </St.Category>
