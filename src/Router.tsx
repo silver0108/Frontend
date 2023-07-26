@@ -20,7 +20,7 @@ export default function Router() {
           <Route path="/language" element={<LanguagePage />} />
           <Route path="/exercise" element={<ExercisePage />} />
           <Route path="/close-distance" element={<CloseDistanceTeacherPage />} />
-          <Route path="/recommened-teacher" element={<RecommendedTeacherPage />} />
+          <Route path="/recommended-teacher" element={<RecommendedTeacherPage />} />
           <Route path="/popular-teacher" element={<PopularTeacherPage />} />
         </Routes>
       </BrowserRouter>
