@@ -13,6 +13,7 @@ interface LessonData {
 }
 
 export default function RecommendedTeacherPage() {
+    
     // api get 해올 부분
     const teacerList: LessonData[] = [
         {

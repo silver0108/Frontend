@@ -1,14 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/Home";
-import ExercisePage from "./pages/ExercisePage";
-import LanguagePage from "./pages/LanguagePage";
 import ArtPage from "./pages/ArtPage";
-import MusicPage from "./pages/MusicPage";
-
 import CloseDistanceTeacherPage from "./pages/CloseDistanceTeacherPage";
-import RecommendedTeacherPage from "./pages/RecommendedTeacherPage";
+import ExercisePage from "./pages/ExercisePage";
+import Home from "./pages/Home";
+import LanguagePage from "./pages/LanguagePage";
+import MusicPage from "./pages/MusicPage";
 import PopularTeacherPage from "./pages/PopularTeacherPage";
+import RecommendedTeacherPage from "./pages/RecommendedTeacherPage";
 
 export default function Router() {
     return (

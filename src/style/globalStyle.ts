@@ -38,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
 
     width:32rem;
     /* height: 100rem; */
-    height: 100rem;
+    height: 120rem;
     /* 임시구현 선 */
     border:1px solid black;
   }

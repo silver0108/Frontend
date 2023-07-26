@@ -2,11 +2,12 @@ import { styled } from "styled-components";
 
 interface RoundButtonProps {
   buttonMessage: string;
+  onClick: () => void;
 }
 
 export default function RoundButton(props: RoundButtonProps) {
-  const { buttonMessage } = props;
-  return <ButtonWrapper>{buttonMessage}</ButtonWrapper>;
+  const { buttonMessage, onClick } = props;
+  return <ButtonWrapper  onClick={onClick}>{buttonMessage}</ButtonWrapper>;
 }
 
 const ButtonWrapper = styled.button`

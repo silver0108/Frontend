@@ -3,6 +3,7 @@ import { LessonImg } from "../../assets";
 import RoundButton from '../common/RoundButton';
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
+import { useNavigate } from "react-router-dom";
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -15,6 +16,12 @@ interface LessonData {
 
 export default function PopularLessonList() {
 
+    const navigate = useNavigate();
+  
+    function MoveToCategory() {
+        // category 로 이동하는 로직
+        navigate("/popular-teacher");
+    }
     // data 받아오기
     const popularList: LessonData[] = [
         {
@@ -50,7 +57,7 @@ export default function PopularLessonList() {
             {popularList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
             ))}
-            <RoundButton buttonMessage = {"급 인기 상승중인 모아 더 보러가기"}/>
+            <RoundButton buttonMessage = {"급 인기 상승중인 모아 더 보러가기"}  onClick={()=>MoveToCategory()}/>
         </St.PopularLessonListWrapper>
     );
 }
