@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { WritingProps } from "../types/WritingData";
+import { WritingProps } from "../../types/WritingData";
 
 
 const ClassAppeal = (props:WritingProps) => {

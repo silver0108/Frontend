@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReviewProps } from "../types/ReviewData";
+import { ReviewProps } from "../../types/ReviewData";
 
 
 const Review = (props:ReviewProps) => {
