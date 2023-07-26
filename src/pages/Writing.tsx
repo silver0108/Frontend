@@ -120,7 +120,7 @@ const Writing = () => {
               {categoryList.map((item, index) => (
                 <St.RadioBoxContainer key={index}>
                   <St.RadioBoxInput />
-                  <St.RadioBoxSpan onClick={() => handleCategoryClick(item, index)} isSelected={selectedCategory === index}>
+                  <St.RadioBoxSpan onClick={() => handleCategoryClick(item, index)} selected={selectedCategory === index}>
                     {item}
                   </St.RadioBoxSpan>
                 </St.RadioBoxContainer>
@@ -274,16 +274,16 @@ const St = {
     clip: rect(0, 0, 0, 0);
   `,
 
-  RadioBoxSpan: styled.label<{ isSelected: boolean }>`
+  RadioBoxSpan: styled.label<{ selected: boolean }>`
     margin: 0 0.5rem;
     padding: 0.3rem 0.7rem;
     
     border: 0.1rem solid #E6E6E6;
     border-radius: 50px;
-    border-color: ${(props) => (props.isSelected ? "#FBD262" : "#E6E6E")};
+    border-color: ${(props) => (props.selected ? "#FBD262" : "#E6E6E")};
     
-    background-color: ${(props) => (props.isSelected ? "#FEFBE8" : "white")};
-    color: ${(props) => (props.isSelected ? "black" : "gray")};
+    background-color: ${(props) => (props.selected ? "#FEFBE8" : "white")};
+    color: ${(props) => (props.selected ? "black" : "gray")};
     
     font-size: 0.8rem;
 
