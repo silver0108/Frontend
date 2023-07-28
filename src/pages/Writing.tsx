@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import TopBar from '../components/common/TopBar';
 
 const Writing = () => {
 
@@ -18,7 +19,7 @@ const Writing = () => {
 
 
   useEffect(() => {
-    if (title && category && hashtag && appeal && price !== undefined && price !== 0 && num > 0 && num <= 10) {
+    if (title && category && hashtag && appeal && price !== undefined && price !== 0 && num > 0 && num <= 6) {
       setIsComplete(true);
     } else {
       setIsComplete(false);
@@ -37,7 +38,7 @@ const Writing = () => {
   };
 
   const handleIncreaseButton = () => {
-    setNum(num < 10 ? (num) => num + 1 : 10);
+    setNum(num < 6 ? (num) => num + 1 : 6);
   }
 
   const handleDecreaseButton = () => {
@@ -76,9 +77,7 @@ const Writing = () => {
   
   return (
     <St.WritingWrapper>
-      <h3 style={{textAlign:"center"}}>
-        재능 공유 글쓰기
-      </h3>
+      <TopBar message="재능 공유 글쓰기"/>
       
       <St.WritingContainer>
         <St.WritingBox>
@@ -102,9 +101,9 @@ const Writing = () => {
               <St.CountButton onClick={handleDecreaseButton}>
                 -
               </St.CountButton>
-              <div style={{margin:"0 0.6rem"}}>
+              <St.CountNum>
                 {num}
-              </div>
+              </St.CountNum>
               <St.CountButton onClick={handleIncreaseButton}>
                 +
               </St.CountButton>
@@ -159,7 +158,7 @@ const Writing = () => {
             <St.WritingHeader>
               수업 가격을 작성해주세요.
             </St.WritingHeader>
-            <St.WritingInput style={{width: "30%", height: "2.5rem", textAlign: "end"}}
+            <St.WritingInput style={{width: "40%",textAlign: "end"}}
             placeholder='10,000원'
             value={price !== undefined ? price.toString() : ''}
             onChange={handlePrice}
@@ -201,7 +200,7 @@ const St = {
   `,
   WritingBox: styled.div`
     //width: 100%;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   `,
   WritingSection: styled.div`
     margin: 0rem 0.6rem;
@@ -211,18 +210,17 @@ const St = {
     flex-direction: column;
   `,
   WritingHeader: styled.div`
-    margin: 1rem 0;
-    // font-size: 1.11rem;
-    font-weight: bold;
+    margin: 1.5rem 0;
+    ${({ theme }) => theme.fonts.body03};
   `,
   WritingPersonnelContainer: styled.div`
-    padding: 0.2rem 0.5rem;
+    padding: 0.5rem 0.8rem;
     
     display: flex; 
     align-items: center;
 
     border: 0.01rem solid #E6E6E6;
-    border-radius: 1rem;
+    border-radius: 2rem;
     
     background-color: white;
   `,
@@ -230,22 +228,26 @@ const St = {
   WritingCategoryContainer: styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
   `,
   RadioBoxContainer: styled.div`
   `,
   WritingInput: styled.input`
     height: 3rem;
-    padding: 0 1rem;
+    padding: 2rem 1.5rem;
 
     border: 0.1rem solid #E6E6E6;
     border-radius: 1rem;
 
+    background-color: white;  
+
     &::placeholder {
-      font-size: 0.77rem;
+      ${({ theme }) => theme.fonts.body07};
+      color: #9D9D9D;
     }
   `,
   WrtingTextArea: styled.textarea`
-    height: 7rem;
+    height: 11rem;
     padding: 1rem 1rem;
       
     border: 0.1rem solid #E6E6E6;
@@ -254,7 +256,8 @@ const St = {
     resize: none;
 
     &::placeholder {
-      font-size: 0.8rem;
+      ${({ theme }) => theme.fonts.body07};
+      color: #9D9D9D;
     }
   `,
   CountButton: styled.button`
@@ -264,41 +267,49 @@ const St = {
     border: none;
     border-radius: 50%;
 
+    background-color: #D9D9D9;
+
+    ${({ theme }) => theme.fonts.body06};
+
     &:active {
       box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     }
   `,
+  CountNum: styled.div`
+    margin: 0 1rem;
+    
+    ${({ theme }) => theme.fonts.body06};
+  `,
   RadioBoxInput: styled.input.attrs({type: 'radio', name: 'category'})`
-    position: absolute;
+    // position: absolute;
 
     clip: rect(0, 0, 0, 0);
   `,
 
   RadioBoxSpan: styled.label<{ selected: boolean }>`
-    margin: 0 0.5rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.3rem 1.06rem;
     
     border: 0.1rem solid #E6E6E6;
     border-radius: 50px;
     border-color: ${(props) => (props.selected ? "#FBD262" : "#E6E6E")};
     
     background-color: ${(props) => (props.selected ? "#FEFBE8" : "white")};
-    color: ${(props) => (props.selected ? "black" : "gray")};
+    color: ${(props) => (props.selected ? "black" : "#9D9D9D")};
     
-    font-size: 0.8rem;
+    ${({ theme }) => theme.fonts.body07};
 
     cursor: pointer;
   `,
 
   WritingCompleteButton: styled.button<{ disabled: boolean }>`
-    height: 3rem;
+    // height: 3rem;
     margin: 1rem;
+    padding: 1.2rem 1.5rem;
 
     border: none;
     border-radius: 1rem;
   
-    font-size: 1.11rem;
-    font-weight: bold;
+    ${({ theme }) => theme.fonts.body03};
 
     background-color: ${(props) => (props.disabled ? "#E6E6E6" : "#FBD262")};
     color: black;
