@@ -16,3 +16,4 @@ export { ReactComponent as ProfileNotActiveIcon} from './icon/profileNotActiveIc
 export { ReactComponent as ChattingActiveIcon} from './icon/chattingActiveIcon.svg';
 export { ReactComponent as HomeNotActiveIcon} from './icon/homeNotActiveIcon.svg';
 export { ReactComponent as ProfileActiveIcon} from './icon/profileActiveIcon.svg';
+export { ReactComponent as WritingIcon } from './icon/writingIcon.svg';
