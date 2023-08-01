@@ -24,7 +24,7 @@ export default function Category() {
 
   return (
     <St.CategoryWrapper>
-      <St.Header> 어떤 카테고리가 있나요? </St.Header>
+      <St.Header> 어떤 카테고리가 있나요? 🧐 </St.Header>
       
       <St.CategoryList>
         {categories.map((category, index) => (

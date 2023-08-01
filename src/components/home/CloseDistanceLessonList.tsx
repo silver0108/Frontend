@@ -52,7 +52,7 @@ export default function CloseDistanceLessonList() {
     
     return (
         <St.PopularLessonListWrapper>
-            <St.Header> 멀리 가실 필요 없어요! </St.Header>
+            <St.Header> 멀리 가실 필요 없어요!🙅 </St.Header>
             {popularList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
             ))}

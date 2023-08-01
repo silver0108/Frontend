@@ -51,7 +51,7 @@ export default function PopularTeacherList() {
     
     return (
         <St.PopularLessonListWrapper>
-            <St.Header> 100점 선생님들을 소개합니다! </St.Header>
+            <St.Header> 💯점 선생님들을 소개합니다! </St.Header>
             <St.TeacherLists>
                 {teacherList.map((teacher, idx) => (
                 <TeacherProfile key={idx} {...teacher} />

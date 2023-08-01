@@ -53,7 +53,7 @@ export default function PopularLessonList() {
     
     return (
         <St.PopularLessonListWrapper>
-            <St.Header> 지금 인기가 많아지고 있어요! </St.Header>
+            <St.Header> 지금 인기가 많아지고 있어요!🚀 </St.Header>
             {popularList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
             ))}
