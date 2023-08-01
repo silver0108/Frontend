@@ -4,6 +4,7 @@ import Header from '../components/home/Header';
 import PopularLessonList from '../components/home/PopularLessonList';
 import PopularTeacherList from '../components/home/PopularTeacherList';
 import {styled} from 'styled-components';
+import BottomBar from '../components/common/BottomBar';
 
 export default function Home() {
   
@@ -14,6 +15,7 @@ export default function Home() {
         <PopularLessonList/>
         <PopularTeacherList/>
         <CloseDistanceLessonList/>
+        <BottomBar />
       </St.HomeWrapper>
     );
 }

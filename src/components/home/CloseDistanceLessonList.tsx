@@ -70,6 +70,7 @@ const St = {
       flex-direction: column;
       width: 37.5rem;
       margin-top: 4rem;
+      margin-bottom: 10rem;
     `,
     
     Header: styled.header`
