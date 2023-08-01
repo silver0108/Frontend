@@ -52,11 +52,14 @@ export default function CloseDistanceLessonList() {
     
     return (
         <St.PopularLessonListWrapper>
-            <St.Header> 멀리 가실 필요 없어요! </St.Header>
+            <St.Header> 멀리 가실 필요 없어요!🙅 </St.Header>
             {popularList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
             ))}
-            <RoundButton buttonMessage = {"가까운 모아 더 보러가기"} onClick={()=>MoveToCategory()}/>
+            
+            <St.RoundButtonWrapper>
+                <RoundButton buttonMessage = {"가까운 모아 더 보러가기"} onClick={()=>MoveToCategory()}/>
+            </St.RoundButtonWrapper>
         </St.PopularLessonListWrapper>
     );
 }
@@ -66,13 +69,18 @@ const St = {
       display: flex;
       flex-direction: column;
       width: 37.5rem;
-      margin-top: 3rem;
+      margin-top: 4rem;
     `,
     
     Header: styled.header`
-      ${({ theme }) => theme.fonts.body03};
+      ${({ theme }) => theme.fonts.body01};
       color: black;
-      margin-left: 1.6rem;
-      margin-bottom: 2rem;
+      margin-left: 2.5rem;
+      margin-bottom: 1.5rem;
     `,
+    RoundButtonWrapper: styled.div`
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10rem;
+    `
   };
