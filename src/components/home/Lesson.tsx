@@ -1,6 +1,7 @@
+import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon, DistanceIcon } from "../../assets";
+
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
-import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon } from "../../assets";
 
 interface LessonProps {
     key: number;
@@ -20,8 +21,11 @@ export default function Lesson(props: LessonProps) {
             <St.LessonImg> {lessonImg} </St.LessonImg>
             <St.LessonExplanation> 
                 <St.Header> {lessonComment} <br/> {lessonExplain} </St.Header>
-                <St.Teacher> {lessonTeacher} {lessonScore} </St.Teacher> 
-                <St.Distance> {lessonDistance} </St.Distance> 
+                <St.Teacher> {lessonTeacher} ⭐{lessonScore} </St.Teacher> 
+                <St.Distance> 
+                    <St.DistanceIc/> 
+                    <St.DistanceNum> {lessonDistance} </St.DistanceNum> 
+                </St.Distance> 
             </St.LessonExplanation>
         </St.LessonWrapper>
   );
@@ -48,7 +52,7 @@ const St = {
         display: flex;
         flex-direction: column;
     
-        margin-top: 0.4rem;
+        margin-top: 1rem;
 
         ${({ theme }) => theme.fonts.body05};
         color: black;
@@ -61,13 +65,26 @@ const St = {
     
     Teacher: styled.div`
         margin-top: 0.2rem;
-        ${({ theme }) => theme.fonts.body07};
+        ${({ theme }) => theme.fonts.body05};
         color: black;
     `,
 
-    Distance: styled.h3`
-        margin-top: 0.2rem;
-        ${({ theme }) => theme.fonts.body07};
-        color: ${({ theme }) => theme.colors.SUB_1}; 
-    `
-  };
+    Distance: styled.div`
+        display: flex;
+    
+    `,
+
+    DistanceIc : styled(DistanceIcon)`
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-top: 0.3rem;
+        margin-right: 0.5rem;
+    `,
+
+    DistanceNum : styled.h3`
+    ${({ theme }) => theme.fonts.body05};
+    color: ${({ theme }) => theme.colors.Blue}; 
+
+    margin-top: 0.2rem;
+    `,
+};

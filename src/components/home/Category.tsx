@@ -69,6 +69,8 @@ const St = {
     align-items: center;
     width: 5rem;
     height: 7rem;
+
+    cursor:pointer;
   `,
 
   CategoryImg : styled.div`
