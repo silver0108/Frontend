@@ -15,15 +15,14 @@ const ButtonWrapper = styled.button`
   justify-content: center;
   align-items: center;
 
-  width: 26rem;
-  height: 4rem;
+  width: 32rem;
+  height: 5rem;
   margin-top: 1.5rem;
-  margin-left: 2.8rem;
 
   background-color: ${({ theme }) => theme.colors.SUB_2};
   color: black;
 
-  ${({ theme }) => theme.fonts.body06};
+  ${({ theme }) => theme.fonts.body03};
 
-  border-radius: 0.8rem;
+  border-radius: 15px;
 `;

@@ -45,19 +45,21 @@ const St = {
 
     width: 37.5rem;
     height: 16rem
-    padding: 1.5rem;
+    padding: 2rem;
+
+    margin-bottom: 3rem;
   `,
   
   Header: styled.header`
-    margin-left: 1.6rem;
-    margin-bottom: 1.6rem;
-    ${({ theme }) => theme.fonts.body03};
+    margin-left: 2.5rem;
+    margin-bottom: 2rem;
+    ${({ theme }) => theme.fonts.body01};
     color: black;
   `,
   
   CategoryList: styled.div`
     display: flex;
-    gap: 0.6rem;
+    gap: 0.8rem;
 
     margin-left: 1.6rem;
   `,
@@ -67,8 +69,8 @@ const St = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 5rem;
-    height: 7rem;
+    width: 6rem;
+    height: 8rem;
 
     cursor:pointer;
   `,
@@ -77,9 +79,8 @@ const St = {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 5rem;
-    height: 4rem;
-    margin-bottom: 0.8rem;
+    width: 6rem;
+    height: 6rem;
   `,
   
 
@@ -87,7 +88,7 @@ const St = {
     display: flex;
     justify-content: center;
     align-items: center;
-    ${({ theme }) => theme.fonts.body05};
+    ${({ theme }) => theme.fonts.body04};
     color: black;
   `,
 

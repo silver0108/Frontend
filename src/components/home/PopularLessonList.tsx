@@ -53,27 +53,35 @@ export default function PopularLessonList() {
     
     return (
         <St.PopularLessonListWrapper>
-            <St.Header> 지금 인기가 많아지고 있어요!🚀 </St.Header>
+            <St.Header> 지금 인기가 많아지고 있어요! 🚀 </St.Header>
             {popularList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
             ))}
-            <RoundButton buttonMessage = {"급 인기 상승중인 모아 더 보러가기"}  onClick={()=>MoveToCategory()}/>
+            <St.RoundButtonWrapper>
+                <RoundButton buttonMessage = {"급 인기 상승중인 모아 더 보러가기"}  onClick={()=>MoveToCategory()}/>
+            </St.RoundButtonWrapper>
         </St.PopularLessonListWrapper>
     );
 }
 
 const St = {
     PopularLessonListWrapper: styled.section`
-      display: flex;
-      flex-direction: column;
-      width: 37.5rem;
-      margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        width: 37.5rem;
+        margin-top: 3rem;
     `,
     
     Header: styled.header`
-      ${({ theme }) => theme.fonts.body03};
-      color: black;
-      margin-left: 1.6rem;
-      margin-bottom: 2rem;
+      
+        ${({ theme }) => theme.fonts.body01};
+        color: black;
+        margin-left: 2.5rem;
+        margin-bottom: 2rem;
     `,
+
+    RoundButtonWrapper: styled.div`
+        display: flex;
+        justify-content: center;
+    `
   };
