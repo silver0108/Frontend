@@ -8,6 +8,7 @@ const colors = {
   Blue: "#0094FF",
   Black: "#3C3C3C",
   White: "#FFFFFF",
+  Gray: "#E6E6E6",
 };
 
 export type ColorsTypes = typeof colors;
