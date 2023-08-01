@@ -70,7 +70,6 @@ const St = {
       flex-direction: column;
       width: 37.5rem;
       margin-top: 4rem;
-      margin-bottom: 10rem;
     `,
     
     Header: styled.header`
@@ -82,5 +81,6 @@ const St = {
     RoundButtonWrapper: styled.div`
         display: flex;
         justify-content: center;
+        margin-bottom: 10rem;
     `
   };
