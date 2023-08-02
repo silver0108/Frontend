@@ -1,28 +1,85 @@
 import { styled } from "styled-components";
 import TopBar from "../components/common/TopBar";
+import { useState } from "react";
+import MyUploadClass from "../components/profile/MyUploadClass";
+import MyApplyClass from "../components/profile/MyApplyClass";
+import Profile from "../components/profile/Profile";
+import BottomBar from "../components/common/BottomBar";
 
 export default function ProfilePage() {
+
+  const [activeButton, setActiveButton] = useState<number>(0);
+
+  const handleButtonClick = (buttonIndex: number) => {
+    setActiveButton(buttonIndex);
+  }
 
   return(
     <St.ProfilePageWrapper>
       <TopBar message="프로필"/>
       <St.ProfilePageContainer>
-
-        <St.CommonTwoButton>
-          
-        </St.CommonTwoButton>
+        <Profile/>
+        <St.BarContainer></St.BarContainer>
+        <St.MyClassContainer>
+          <St.CommonTwoButton
+            active={(activeButton === 0).toString()}
+            onClick={() => handleButtonClick(0)}>
+            내가 올린 모아
+          </St.CommonTwoButton>
+          <St.CommonTwoButton
+            active={(activeButton === 1).toString()}
+            onClick={() => handleButtonClick(1)}>
+            내가 신청한 모아
+          </St.CommonTwoButton>
+        </St.MyClassContainer>
+        {activeButton === 0 && (
+          <MyUploadClass/>
+        )}
+        {activeButton === 1 && (
+          <MyApplyClass/>
+        )}
       </St.ProfilePageContainer>
-
+      <BottomBar/>
     </St.ProfilePageWrapper>
   );
 }
 
 const St = {
   ProfilePageWrapper: styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+
+    width: 100%;
   `,
   ProfilePageContainer: styled.div`
+    flex: 1;
+    overflow-y: auto;
   `,
-  CommonTwoButton: styled.button`
+  BarContainer: styled.div`
+    border: 0.5rem solid #F5F5F5;
+  `,
+  MyClassContainer: styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 1rem;
+  `,
+  CommonTwoButton: styled.button<{active: string}>`
+    flex: 1;
+
+    padding: 2rem;
+
+    border: none;
+    border-bottom: 0.3rem solid ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
+    
+    background-color: white;
+    color: ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
+    
+
+    ${({ theme }) => theme.fonts.body06};
+
+    cursor: pointer;
   `
 
 }
