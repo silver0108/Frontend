@@ -2,6 +2,7 @@ import Lesson from '../components/home/Lesson';
 import { LessonImg } from "../assets";
 import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
+import useGetPopularTeacher from "../hooks/useGetPopularTeacher";
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -14,6 +15,9 @@ interface LessonData {
 
 export default function PopularTeacherPage() {
     // api get 해올 부분
+    
+  const { popularTeacherList } = useGetPopularTeacher();
+  
     const teacerList: LessonData[] = [
         {
             lessonImg: <LessonImg/>,
