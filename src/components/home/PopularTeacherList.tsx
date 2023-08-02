@@ -51,35 +51,43 @@ export default function PopularTeacherList() {
     
     return (
         <St.PopularLessonListWrapper>
-            <St.Header> 100점 선생님들을 소개합니다! </St.Header>
+            <St.Header> 💯점 돌봄이들을 소개합니다! </St.Header>
             <St.TeacherLists>
                 {teacherList.map((teacher, idx) => (
                 <TeacherProfile key={idx} {...teacher} />
                 ))}
             </St.TeacherLists>
-            <RoundButton buttonMessage = {"다른 선생님들도 보러가기"}   onClick={()=>MoveToCategory()}/>
+            <St.RoundButtonWrapper>
+                <RoundButton buttonMessage = {"다른 돌봄이들도 보러가기"}   onClick={()=>MoveToCategory()}/>
+            </St.RoundButtonWrapper>
         </St.PopularLessonListWrapper>
     );
 }
 
 const St = {
     PopularLessonListWrapper: styled.section`
-      display: flex;
-      flex-direction: column;
-      width: 37.5rem;
-      margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        width: 37.5rem;
+        margin-top: 4rem;
     `,
     
     Header: styled.header`
-      ${({ theme }) => theme.fonts.body03};
-      color: black;
-      margin-left: 1.6rem;
-      margin-bottom: 2rem;
+        ${({ theme }) => theme.fonts.body01};
+        color: black;
+        margin-left: 2.5rem;
+        margin-bottom: 2rem;
     `,
     
     TeacherLists: styled.div`
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
         margin-left: 2rem;
+        margin-top: 1rem;
     `,
+
+    RoundButtonWrapper: styled.div`
+        display: flex;
+        justify-content: center;
+    `
   };

@@ -1,6 +1,7 @@
+import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon } from "../../assets";
+
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
-import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon } from "../../assets";
 
 export default function Header() {
     // icon import 오류 해결 필요
@@ -18,10 +19,11 @@ const St = {
     width: 37.5rem;
     height: 6.4rem;
     padding: 1.5rem;
+    margin-bottom: 1rem;
   `,
   
   Header: styled.header`
-    ${({ theme }) => theme.fonts.title02};
+    ${({ theme }) => theme.fonts.title01};
     color: black;
   `,
   
