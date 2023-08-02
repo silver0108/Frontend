@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ProfileProps } from "../types/ProfileData";
+import { ProfileProps } from "../../types/ProfileData";
 
 
 const ProfileInfo = (props:ProfileProps) => {

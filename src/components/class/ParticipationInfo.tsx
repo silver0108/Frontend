@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from "styled-components";
-import Modal from './common/Modal';
-import { ProfileProps } from '../types/ProfileData';
+import Modal from '../common/Modal';
+import { ProfileProps } from '../../types/ProfileData';
 
 
 const ParticipationInfo = (props:ProfileProps) => {

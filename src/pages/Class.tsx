@@ -2,9 +2,9 @@ import { useState } from 'react';
 import styled from "styled-components";
 
 import ProfileInfo from "../components/ProfileInfo";
-import ClassAppeal from "../components/ClassAppeal";
-import Review from "../components/Review";
-import ParticipationInfo from "../components/ParticipationInfo";
+import ClassAppeal from "../components/class/ClassAppeal";
+import Review from "../components/class/Review";
+import ParticipationInfo from "../components/class/ParticipationInfo";
 import { ProfileInfoProps } from "../types/ProfileData";
 import { WritingInfoProps } from "../types/WritingData";
 import { ReviewInfoProps } from '../types/ReviewData';
@@ -54,7 +54,7 @@ let reviewData:ReviewInfoProps[] = [
     contents: "별로에요... 다신 안들어요.",
   }];
 
-const Profile = () => {
+const Class = () => {
   const [activeButton, setActiveButton] = useState<number>(0);
 
   const handleButtonClick = (buttonIndex: number) => {
@@ -95,7 +95,7 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Class;
 
 const ProfileWrapper = styled.div`
   width: 100%;
