@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import styled from "styled-components";
 
-import ProfileInfo from "../components/profile/ProfileInfo";
-import ClassAppeal from "../components/profile/ClassAppeal";
-import Review from "../components/profile/Review";
-import ParticipationInfo from "../components/profile/ParticipationInfo";
+import ProfileInfo from "../components/class/ProfileInfo";
+import ClassAppeal from "../components/class/ClassAppeal";
+import Review from "../components/class/Review";
+import ParticipationInfo from "../components/class/ParticipationInfo";
 import { ProfileInfoProps } from "../types/ProfileData";
 import { WritingInfoProps } from "../types/WritingData";
 import { ReviewInfoProps } from '../types/ReviewData';
-import TopBar from '../components/common/TopBar';
-
 
 let profileData:ProfileInfoProps = {
   nickname: '상훈',
@@ -56,7 +54,7 @@ let reviewData:ReviewInfoProps[] = [
     contents: "별로에요... 다신 안들어요.",
   }];
 
-const Profile = () => {
+const Class = () => {
   const [activeButton, setActiveButton] = useState<number>(0);
 
   const handleButtonClick = (buttonIndex: number) => {
@@ -64,8 +62,10 @@ const Profile = () => {
   }
 
   return (
-    <St.ProfileWrapper>
-      <TopBar message = {"선생님 프로필"}/>
+    <ProfileWrapper>
+      <h3 style={{textAlign:"center"}}>
+        선생님 프로필
+      </h3>
 
       <St.ProfileContainer>
         <ProfileInfo profile={profileData} writing={writingData}></ProfileInfo>
@@ -90,24 +90,26 @@ const Profile = () => {
       </St.ProfileContainer>
       <ParticipationInfo profile={profileData} writing={writingData}></ParticipationInfo>
 
-    </St.ProfileWrapper>
+    </ProfileWrapper>
 
   );
 };
 
-export default Profile;
+export default Class;
+
+const ProfileWrapper = styled.div`
+  width: 100%;
+  // height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+
+  margin: 0 1rem;
+
+`;
 
 const St = {
-  ProfileWrapper: styled.div`
-    width: 100%;
-    // height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    flex-direction: column; 
-
-    margin: 0 1rem;
-  `,
   ProfileContainer: styled.div`
     flex: 1;
     overflow-y: auto;
@@ -119,16 +121,16 @@ const St = {
   ProfileContentsButton: styled.button<{active: string}>`
     flex: 1;
 
-    padding: 2rem;
+    padding: 1rem;
 
     border: none;
-    border-bottom: 0.3rem solid ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
+    border-bottom: 0.2rem solid ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
     
     background-color: white;
     color: ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
     
-
-    ${({ theme }) => theme.fonts.body06};
+    font-size: 1.1rem;
+    font-weight: bold;
 
     cursor: pointer;
   `
