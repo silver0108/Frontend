@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { WritingProps } from "../types/WritingData";
+import { WritingProps } from "../../types/WritingData";
 
 
 const ClassAppeal = (props:WritingProps) => {
@@ -30,12 +30,11 @@ const ClassAppealWrapper = styled.div`
 
 const St = {
   TitleContainer: styled.div`
-    font-size: 1.2rem;
-    font-weight: bold;
+    ${({ theme }) => theme.fonts.body06};
 
     margin: 3rem 0
   `,
   ContentsContainer: styled.div`
-    font-size: 1.08rem;
+
   `
 }

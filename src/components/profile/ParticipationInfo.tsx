@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from "styled-components";
-import Modal from './common/Modal';
-import { ProfileProps } from '../types/ProfileData';
+import Modal from '../common/Modal';
+import { ProfileProps } from '../../types/ProfileData';
 
 
 const ParticipationInfo = (props:ProfileProps) => {
@@ -30,12 +30,8 @@ const ParticipationInfo = (props:ProfileProps) => {
       {count <= personnel ? (
         <>
           <St.ParticipationInfoContainer>
-            <div>
-              현재 참여현황 ({count}/4)
-            </div>
-            <div style={{ fontSize: "1.5rem", fontWeight: "bold"}}>
-              {price}원
-            </div>
+            <St.ParticipationInfoText> 현재 참여현황 ({count}/{personnel})</St.ParticipationInfoText>
+            <St.ParticipationInfoPrice>{price}원</St.ParticipationInfoPrice>
           </St.ParticipationInfoContainer>
           <St.ParticipationButtonContainer>
             <StChatButton>채팅하기</StChatButton>
@@ -57,7 +53,7 @@ const ParticipationInfo = (props:ProfileProps) => {
 export default ParticipationInfo;
 
 const ParticipationInfoWrapper = styled.div<{ justifycontentstyle: string }>`
-  height: 4rem;
+  height: 8rem;
 
   display: flex;
   justify-content: ${(props) => props.justifycontentstyle};
@@ -71,19 +67,29 @@ const ParticipationInfoWrapper = styled.div<{ justifycontentstyle: string }>`
 
 const St = {
   ParticipationInfoContainer: styled.div`
+    display: flex;
+    flex-direction: column;
+    
+    padding: 1rem;
+  `,
+  ParticipationInfoText: styled.div`
+    margin-bottom: 0.5rem;
+    ${({ theme }) => theme.fonts.body07};
+  `,
+  ParticipationInfoPrice: styled.div`
+    ${({ theme }) => theme.fonts.body01};
   `,
   ParticipationButtonContainer: styled.div`
     display: flex;
   `,
   CommonButton: styled.button`
-    margin: 0 0.1rem;
-    padding: 1rem;
+    margin: 0 0.2rem;
+    padding: 1.3rem 1.5rem;
 
     border: none;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
 
-    font-size: 1rem;
-    font-weight: bold;
+    ${({ theme }) => theme.fonts.body06};
 
     cursor: pointer;
   `,
@@ -95,7 +101,7 @@ const StChatButton = styled(St.CommonButton)`
 `
 
 const StApplicationButton = styled(St.CommonButton)`
-  background-color: #FBD262;
+  background-color: ${({ theme }) => theme.colors.SUB_2};
 `
 
 const StConfirmButton = styled(St.CommonButton)`
