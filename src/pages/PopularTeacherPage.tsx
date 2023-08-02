@@ -17,7 +17,7 @@ export default function PopularTeacherPage() {
     // api get 해올 부분
     
   const { popularTeacherList } = useGetPopularTeacher();
-  
+
     const teacerList: LessonData[] = [
         {
             lessonImg: <LessonImg/>,

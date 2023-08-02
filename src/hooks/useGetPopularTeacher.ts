@@ -6,6 +6,5 @@ export default function useGetPopularTeacher() {
     staleTime: 3000,
   });
 
-  console.log(popularTeacherList);
   return { popularTeacherList };
 }
