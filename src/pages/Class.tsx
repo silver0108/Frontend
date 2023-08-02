@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from "styled-components";
 
-import ProfileInfo from "../components/ProfileInfo";
+import ProfileInfo from "../components/class/ProfileInfo";
 import ClassAppeal from "../components/class/ClassAppeal";
 import Review from "../components/class/Review";
 import ParticipationInfo from "../components/class/ParticipationInfo";

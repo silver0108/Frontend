@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReviewProps } from "../../types/ReviewData";
+import { StarIcon_1 } from "../../assets";
 
 
 const Review = (props:ReviewProps) => {
@@ -11,12 +12,12 @@ const Review = (props:ReviewProps) => {
         <St.ReviewContainer key={index}>
           <St.ReviewProfile>
             <img src={review.avatar}/>
-            <div>{review.nickname}</div>
+            <St.ReviewNickname>{review.nickname}</St.ReviewNickname>
           </St.ReviewProfile>
           <St.ReviewInfo>
             <St.RatingContainer>
-              <img src={`img/star.png`}></img>
-              {review.rating}
+              <StarIcon_1/>
+              <St.Rating>{review.rating}</St.Rating>
             </St.RatingContainer>
             <div>{review.contents}</div>
           </St.ReviewInfo>
@@ -55,8 +56,17 @@ const St = {
 
     margin: 0 1rem;
   `,
+  ReviewNickname: styled.div`
+  ${({ theme }) => theme.fonts.body07};
+  `,
   RatingContainer: styled.div`
     display: flex;
+    align-items: center;
+
     margin-bottom: 0.5rem;
+
+    ${({ theme }) => theme.fonts.body07};
+  `,
+  Rating: styled.div`
   `
 }
