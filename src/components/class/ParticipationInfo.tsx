@@ -109,4 +109,3 @@ const StConfirmButton = styled(St.CommonButton)`
 
   background-color: #FBD262;
 `
-
