@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Modal from '../common/Modal';
 import { ProfileProps } from '../../types/ProfileData';
 
-
 const ParticipationInfo = (props:ProfileProps) => {
 
   const nickname = props.profile.nickname;
@@ -11,17 +10,32 @@ const ParticipationInfo = (props:ProfileProps) => {
   const price = props.writing.price;
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [count, setIsCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
+  const [isApplied, setIsApplied] = useState<boolean>(false);
+  const [modalType, setModalType] = useState<'apply' | 'cancel' | ''>('');
 
   const justifyContentStyle = count > personnel ? "center" : "space-between";
 
-  const openModal = () => {
-      setModalOpen(true);
+  const handleCloseModal = () => {
+    setModalOpen(false);
   }
-  const closeModal = () => {
-    if (count <= personnel)
-      setIsCount(count => count+1);
 
+  const handleApplication = () => {
+    if(isApplied)
+      setModalType('cancel');
+    else{
+      if (count < personnel) {
+        setCount((prevCount) => prevCount + 1);
+        setIsApplied(true);
+        setModalType('apply');
+      }
+    }
+    setModalOpen(true); 
+  };
+
+  const handleCancelApplication = () => {
+    setCount((prevCount) => Math.max(prevCount - 1, 0));
+    setIsApplied(false);
     setModalOpen(false);
   }
 
@@ -35,11 +49,28 @@ const ParticipationInfo = (props:ProfileProps) => {
           </St.ParticipationInfoContainer>
           <St.ParticipationButtonContainer>
             <StChatButton>채팅하기</StChatButton>
-            <StApplicationButton onClick={openModal}>신청하기</StApplicationButton>
+            <StApplicationButton onClick={handleApplication} isApplied={isApplied}>
+              {isApplied ? '취소하기' : '신청하기'}
+            </StApplicationButton>
+            
             <Modal isOpen={modalOpen}>
-              <h2>수업이 신청되었습니다!</h2>
-              <div style={{marginBottom:"30px"}}>{nickname} 선생님 수업 신청 완료</div>
-              <StConfirmButton onClick={closeModal}>확인</StConfirmButton>
+            {isApplied && modalType === 'apply' ? (
+              <>
+                <St.MainContents> 수업이 신청되었습니다!</St.MainContents>
+                <St.SubContents>{nickname} 선생님 수업 신청 완료</St.SubContents>
+                <StConfirmButton onClick={handleCloseModal}>확인</StConfirmButton>
+              </>
+            ) : (
+              <>
+                <St.MainContents>수업을 취소하시겠습니까?!</St.MainContents>
+                <St.SubContents>선착순으로 조기마감 될 수 있어요.</St.SubContents>
+                <St.ButtonContainer>
+                  <StCancelButton onClick={handleCloseModal}>아니요</StCancelButton>
+                  <StConfirmButton onClick={handleCancelApplication}>예</StConfirmButton>
+                </St.ButtonContainer>
+                
+              </>
+            )}
             </Modal>
           </St.ParticipationButtonContainer>
             </>
@@ -93,19 +124,46 @@ const St = {
 
     cursor: pointer;
   `,
+  MainContents: styled.div`
+    margin: 0 3rem;
+    margin-top: 1.5rem;
 
+    ${({ theme }) => theme.fonts.body03};
+  `,
+  SubContents: styled.div`
+    margin: 1.5rem 3rem;
+    
+    ${({ theme }) => theme.fonts.body08};
+  `,
+  ButtonContainer: styled.div`
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+`
 }
 
 const StChatButton = styled(St.CommonButton)`
   background-color: #E6E6E6;
 `
 
-const StApplicationButton = styled(St.CommonButton)`
-  background-color: ${({ theme }) => theme.colors.SUB_2};
+const StApplicationButton = styled(St.CommonButton)<{ isApplied: boolean }>`
+  background-color: ${({ theme, isApplied }) => 
+    (isApplied ? theme.colors.SUB_1 : theme.colors.SUB_2)};
+  color: ${({ theme, isApplied }) => (isApplied ? "white" : "black")};
 `
-
 const StConfirmButton = styled(St.CommonButton)`
   width: 100%;
 
   background-color: #FBD262;
 `
+
+const StCancelButton = styled(St.CommonButton)`
+  width: 100%;
+
+  background-color: ${({ theme }) => theme.colors.Gray};
+
+  &:active {
+    background-color: ${({ theme }) => theme.colors.SUB_1};
+  }
+`;
