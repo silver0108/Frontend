@@ -1,31 +1,21 @@
 import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon, DistanceIcon } from "../../assets";
-
+import {LessonInfo} from '../../types/LessonInfo';
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
 
-interface TeacherProps {
-    key: number;
-    teacherImg : JSX.Element;
-    teacherName : string;
-    teacherCategory : string;
-    teacherDistance : string;
-    teacherScore : string;
-    reviewNumber : string;
-}
-export default function Teacher(props: TeacherProps) {
+export default function Teacher(props: LessonInfo) {
 
-    const { teacherImg, teacherName, teacherCategory, teacherDistance, teacherScore, reviewNumber } = props;
-
+    
     return (
         <St.TeacherWrapper>
-            <St.TeacherImg> {teacherImg} </St.TeacherImg>
+            <St.TeacherImg  src = {props?.user?.imageUrl} />
             <St.TeacherExplanation> 
-                <St.Name> {teacherName} </St.Name>
-                <St.Category> {teacherCategory} </St.Category>
+                <St.Name> {props?.user?.username} </St.Name>
+                <St.Category> {props?.category?.title} </St.Category>
                 <St.Info> 
                     <St.DistanceIc/> 
-                    <St.DistanceNum> {teacherDistance} </St.DistanceNum> 
-                    <St.Score> ⭐ {teacherScore} ({reviewNumber}) </St.Score> 
+                    <St.DistanceNum>  ~{props?.distance}m </St.DistanceNum> 
+                    <St.Score> ⭐ {props?.user?.rating} </St.Score> 
                 </St.Info> 
             </St.TeacherExplanation>
         </St.TeacherWrapper>
@@ -42,7 +32,7 @@ const St = {
         margin-bottom: 3rem;
     `,
 
-    TeacherImg : styled.article`
+    TeacherImg : styled.img`
         display: flex;
         width: 7.3rem;
         height: 7.3rem;
