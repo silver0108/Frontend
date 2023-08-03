@@ -9,15 +9,25 @@ interface TeacherProps {
     teacherScore: number;
 }
 
-export default function TeacherProfile(props: TeacherProps) {
+interface TeacherInfo {
+    id: number;
+    name: string;
+    rating: number;
+    imageUrl: string;
+    gender: string;
+  
+}
 
-    const { teacherImg, teacherName, teacherScore } = props;
+export default function TeacherProfile(props: TeacherInfo) {
+
+    const {id, name, rating, imageUrl, gender} = props;
+    // const { teacherImg, teacherName, teacherScore } = props;
 
     return (
         <St.TeacherWrapper>
-            <St.TeacherImg> {teacherImg} </St.TeacherImg>
-            <St.TeacherName> {teacherName} </St.TeacherName> 
-            <St.TeacherScore> ⭐ {teacherScore} </St.TeacherScore> 
+            <St.TeacherImg src = {imageUrl} /> 
+            <St.TeacherName> {name} </St.TeacherName> 
+            <St.TeacherScore> ⭐ {rating} </St.TeacherScore> 
         </St.TeacherWrapper>
   );
 }
@@ -29,7 +39,7 @@ const St = {
     flex-direction: column;
     `,
 
-    TeacherImg: styled.div`
+    TeacherImg: styled.img`
     width: 4.3rem;
     height: 4.3rem;
     `,

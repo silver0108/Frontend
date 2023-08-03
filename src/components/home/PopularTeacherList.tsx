@@ -9,9 +9,18 @@ interface TeacherData {
     teacherImg: JSX.Element;
     teacherName: string;
     teacherScore: number;
+
 }
 
-export default function PopularTeacherList() {
+interface TeacherInfo {
+    id: number;
+    name: string;
+    rating: number;
+    imageUrl: string;
+    gender: string;
+  
+}
+export default function PopularTeacherList({ props }: { props: TeacherInfo[] }) {
 
     const navigate = useNavigate();
   
@@ -20,7 +29,13 @@ export default function PopularTeacherList() {
         navigate("/recommended-teacher");
     }
     // data 받아오기
-    const teacherList: TeacherData[] = [
+
+    console.log("teacher", props);
+
+    const teacherList = props;
+    console.log('teacherList', teacherList);
+    // dummy list
+    /*const teacherList: TeacherData[] = [
         {
             teacherImg: <TeacherImg/>,
             teacherName: "상훈쌤",
@@ -47,8 +62,7 @@ export default function PopularTeacherList() {
             teacherScore: 4.5,
         },
     ]
-    
-    
+    */
     return (
         <St.PopularLessonListWrapper>
             <St.Header> 💯점 돌봄이들을 소개합니다! </St.Header>
