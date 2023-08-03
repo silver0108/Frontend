@@ -39,7 +39,9 @@ export default function Home() {
         console.log('error', data);
     }
 
-    const {popular, teachers, distance} = data;
+    const popular = data?.popular;
+    const teachers = data?.teachers;
+    const distance = data?.distance;
 
     return (
 
