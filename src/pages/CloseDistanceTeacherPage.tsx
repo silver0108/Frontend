@@ -69,7 +69,7 @@ export default function CloseDistanceTeacherPage() {
     return (
       <St.CloseDistanceTeacherWrapper>
 
-        <TopBar message = {"거리가 가까운 수업들"} />
+        <TopBar message = {"거리가 가까운 돌봄이들"} />
         {teacerList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}
@@ -79,7 +79,5 @@ export default function CloseDistanceTeacherPage() {
 
 const St = {
     CloseDistanceTeacherWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }

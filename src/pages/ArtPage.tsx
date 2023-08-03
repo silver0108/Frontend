@@ -77,7 +77,5 @@ export default function ArtPage() {
 
 const St = {
     ArtWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }

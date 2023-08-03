@@ -77,7 +77,5 @@ export default function ExercisePage() {
 
 const St = {
     ExerciseWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }

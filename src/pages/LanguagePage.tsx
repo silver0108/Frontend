@@ -78,7 +78,5 @@ export default function LanguagePage() {
 
 const St = {
     LanguageWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }

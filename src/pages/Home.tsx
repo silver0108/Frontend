@@ -19,6 +19,7 @@ export default function Home() {
 
     
     // 전체 Lecture 정보 get
+    /*
     const { data, isLoading, error } = useQuery('lectures', fetchLectures);
 
     async function fetchLectures() {
@@ -34,7 +35,7 @@ export default function Home() {
     if (error) {
         console.log('error', data);
     }
-    
+    */
    
     return (
       <St.HomeWrapper>

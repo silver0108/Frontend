@@ -78,7 +78,5 @@ export default function MusicPage() {
 
 const St = {
     MusicWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }

@@ -16,9 +16,6 @@ interface LessonData {
 export default function PopularTeacherPage() {
     // api get 해올 부분
     
-    
-  const { popularTeacherList } = useGetPopularTeacher();
-    console.log(popularTeacherList);
     const teacerList: LessonData[] = [
         {
             lessonImg: <LessonImg/>,
@@ -74,7 +71,7 @@ export default function PopularTeacherPage() {
     return (
       <St.PopularTeacherWrapper>
         
-        <TopBar message = {"인기 급상승 수업들"} />
+        <TopBar message = {"인기 급상승 돌봄이들"} />
         {teacerList.map((lesson, idx) => (
             <Lesson key={idx} {...lesson} />
         ))}
@@ -84,7 +81,5 @@ export default function PopularTeacherPage() {
 
 const St = {
     PopularTeacherWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }
