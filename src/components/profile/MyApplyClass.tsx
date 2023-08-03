@@ -46,7 +46,7 @@ const St = {
   `,
   ScrollableContainer: styled.div`
     height: 25rem;
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
     
     overflow-y: auto;
   `,
