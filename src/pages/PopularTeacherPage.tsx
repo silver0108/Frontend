@@ -16,8 +16,9 @@ interface LessonData {
 export default function PopularTeacherPage() {
     // api get 해올 부분
     
+    
   const { popularTeacherList } = useGetPopularTeacher();
-
+    console.log(popularTeacherList);
     const teacerList: LessonData[] = [
         {
             lessonImg: <LessonImg/>,
