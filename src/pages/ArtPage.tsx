@@ -12,7 +12,7 @@ export default function ArtPage() {
     const { data, isLoading, error } = useQuery('lectures', fetchLesson);
 
     async function fetchLesson() {
-        const response = await fetch('http://49.247.157.183:3000/api/lectures?categoryId=4');
+        const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/lectures?categoryId=4`);
         const data = await response.json();
         return data;
     }

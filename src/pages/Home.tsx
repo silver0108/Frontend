@@ -22,7 +22,7 @@ export default function Home() {
     const { data, isLoading, error } = useQuery('featured', fetchLectures);
 
     async function fetchLectures() {
-        const response = await fetch('http://49.247.157.183:3000/api/featured');
+        const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/featured`);
         const data = await response.json();
         return data;
     }

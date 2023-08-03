@@ -49,7 +49,7 @@ const St = {
         height: 6rem;
         margin-right: 0.8rem;
 
-        border-radius: 20px;
+        border-radius: 50px;
     `,
 
     LessonExplanation: styled.div`

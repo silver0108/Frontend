@@ -19,7 +19,7 @@ export default function RecommendedTeacherPage() {
     const { data, isLoading, error } = useQuery('users', fetchTeacher);
 
     async function fetchTeacher() {
-        const response = await fetch('http://49.247.157.183:3000/api/users?sort=recommended');
+        const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/users?sort=recommended`);
         const data = await response.json();
         return data;
     }
