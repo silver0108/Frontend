@@ -10,7 +10,7 @@ import { UploadClassProps, WritingInfoProps } from "../types/WritingData";
 
 let uploadClassData:WritingInfoProps[] = [
   {
-    title: '배드민턴 쉽게 가르쳐드려요!',
+    title: '솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.',
     personnel: 3,
     category: '운동',
     tag: ['배드민턴', '8~12세', '정원 4명'],
@@ -30,7 +30,7 @@ let uploadClassData:WritingInfoProps[] = [
     price: 15000
   },
   {
-    title: '배드민턴 쉽게 가르쳐드려요!',
+    title: '같이 빵 만들어볼까요?\n아이들에게 꿈같은 시간을 선물합니다.',
     personnel: 4,
     category: '운동',
     tag: ['배드민턴', '8~12세', '정원 4명'],

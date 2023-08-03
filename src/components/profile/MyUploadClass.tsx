@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { UploadClassProps, WritingInfoProps } from '../../types/WritingData';
+import NoContents from './NoContents';
 
 export default function MyUploadClass(props:UploadClassProps) {
 
@@ -16,37 +17,42 @@ export default function MyUploadClass(props:UploadClassProps) {
 
   return (
     <St.MyUploadClassWraper>
-      <St.ScrollableContainer>
-      {list.map((lecture, index) => (
-        <St.MyUploadClassContainer>
-          <St.ContentsContainer>
-            <St.Title>{lecture.title}</St.Title>
-            <St.PersonnelContainer>
-              {num === lecture.personnel ? (
-                <St.Personnel>신청 마감</St.Personnel>
-              ):(
-                <>
-                  <St.Personnel>{num}/{lecture.personnel}명</St.Personnel>
-                  <St.Status>신청 중</St.Status>
-                </>
-              )}
+      {list.length === 0 ? (
+        <NoContents type={0}/>
+      ) : (
+        <St.ScrollableContainer>
+        {list.map((lecture, index) => (
+          <St.MyUploadClassContainer key={index}>
+            <St.ContentsContainer>
+              <St.Title>{lecture.title}</St.Title>
+              <St.PersonnelContainer>
+                {num === lecture.personnel ? (
+                  <St.Personnel>신청 마감</St.Personnel>
+                ):(
+                  <>
+                    <St.Personnel>{num}/{lecture.personnel}명</St.Personnel>
+                    <St.Status>신청 중</St.Status>
+                  </>
+                )}
+                
+              </St.PersonnelContainer>
               
-            </St.PersonnelContainer>
+            </St.ContentsContainer>
+            {num === lecture.personnel ? (
+              <StartButton onClick={handleStartLecture}>
+              수업 시작
+              </StartButton>
+            ):(
+              <DeleteButton onClick={handleDeleteLecture}>
+              수업 삭제
+              </DeleteButton>
+            )}
             
-          </St.ContentsContainer>
-          {num === lecture.personnel ? (
-            <StartButton onClick={handleStartLecture}>
-            수업 시작
-            </StartButton>
-          ):(
-            <DeleteButton onClick={handleDeleteLecture}>
-            수업 삭제
-            </DeleteButton>
-          )}
-          
-        </St.MyUploadClassContainer>
-      ))}
+          </St.MyUploadClassContainer>
+        ))}
       </St.ScrollableContainer>
+      )}
+      
     </St.MyUploadClassWraper>
   );
 }
