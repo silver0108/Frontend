@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import styled from "styled-components";
 
-import ProfileInfo from "../components/ProfileInfo";
-import ClassAppeal from "../components/ClassAppeal";
-import Review from "../components/Review";
-import ParticipationInfo from "../components/ParticipationInfo";
+import ProfileInfo from "../components/class/ProfileInfo";
+import ClassAppeal from "../components/class/ClassAppeal";
+import Review from "../components/class/Review";
+import ParticipationInfo from "../components/class/ParticipationInfo";
 import { ProfileInfoProps } from "../types/ProfileData";
 import { WritingInfoProps } from "../types/WritingData";
 import { ReviewInfoProps } from '../types/ReviewData';
+import TopBar from '../components/common/TopBar';
+
 
 let profileData:ProfileInfoProps = {
   nickname: '상훈',
@@ -62,10 +64,8 @@ const Profile = () => {
   }
 
   return (
-    <ProfileWrapper>
-      <h3 style={{textAlign:"center"}}>
-        선생님 프로필
-      </h3>
+    <St.ProfileWrapper>
+      <TopBar message = {"선생님 프로필"}/>
 
       <St.ProfileContainer>
         <ProfileInfo profile={profileData} writing={writingData}></ProfileInfo>
@@ -90,26 +90,24 @@ const Profile = () => {
       </St.ProfileContainer>
       <ParticipationInfo profile={profileData} writing={writingData}></ParticipationInfo>
 
-    </ProfileWrapper>
+    </St.ProfileWrapper>
 
   );
 };
 
 export default Profile;
 
-const ProfileWrapper = styled.div`
-  width: 100%;
-  // height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  flex-direction: column; 
-
-  margin: 0 1rem;
-
-`;
-
 const St = {
+  ProfileWrapper: styled.div`
+    width: 100%;
+    // height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column; 
+
+    margin: 0 1rem;
+  `,
   ProfileContainer: styled.div`
     flex: 1;
     overflow-y: auto;
@@ -121,16 +119,16 @@ const St = {
   ProfileContentsButton: styled.button<{active: string}>`
     flex: 1;
 
-    padding: 1rem;
+    padding: 2rem;
 
     border: none;
-    border-bottom: 0.2rem solid ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
+    border-bottom: 0.3rem solid ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
     
     background-color: white;
     color: ${(props) => ((props.active === "true") ? 'black' : '#ccc')};
     
-    font-size: 1.1rem;
-    font-weight: bold;
+
+    ${({ theme }) => theme.fonts.body06};
 
     cursor: pointer;
   `
