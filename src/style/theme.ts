@@ -12,7 +12,8 @@ const colors = {
   Gray: "#E6E6E6",
   Yellow_1: "#FFDB20",
   Yellow_2: "#FEFBE8",
-  Yellow_3: "#EAC955"
+  Yellow_3: "#EAC955",
+  Red: "#FB6262",
 };
 
 export type ColorsTypes = typeof colors;

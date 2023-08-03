@@ -5,6 +5,51 @@ import MyUploadClass from "../components/profile/MyUploadClass";
 import MyApplyClass from "../components/profile/MyApplyClass";
 import Profile from "../components/profile/Profile";
 import BottomBar from "../components/common/BottomBar";
+import { UploadClassProps, WritingInfoProps } from "../types/WritingData";
+
+
+let uploadClassData:WritingInfoProps[] = [
+  {
+    title: '배드민턴 쉽게 가르쳐드려요!',
+    personnel: 3,
+    category: '운동',
+    tag: ['배드민턴', '8~12세', '정원 4명'],
+    appeal: '- 육상 운동 선수 출신\n\
+            - 10분 기본 체조\n\
+            - 엄격 X',
+    price: 15000
+  },
+  {
+    title: '배드민턴 쉽게 가르쳐드려요!',
+    personnel: 2,
+    category: '운동',
+    tag: ['배드민턴', '8~12세', '정원 4명'],
+    appeal: '- 육상 운동 선수 출신\n\
+            - 10분 기본 체조\n\
+            - 엄격 X',
+    price: 15000
+  },
+  {
+    title: '배드민턴 쉽게 가르쳐드려요!',
+    personnel: 4,
+    category: '운동',
+    tag: ['배드민턴', '8~12세', '정원 4명'],
+    appeal: '- 육상 운동 선수 출신\n\
+            - 10분 기본 체조\n\
+            - 엄격 X',
+    price: 15000
+  },
+  {
+    title: '배드민턴 쉽게 가르쳐드려요!',
+    personnel: 4,
+    category: '운동',
+    tag: ['배드민턴', '8~12세', '정원 4명'],
+    appeal: '- 육상 운동 선수 출신\n\
+            - 10분 기본 체조\n\
+            - 엄격 X',
+    price: 15000
+  }
+]
 
 export default function ProfilePage() {
 
@@ -33,7 +78,7 @@ export default function ProfilePage() {
           </St.CommonTwoButton>
         </St.MyClassContainer>
         {activeButton === 0 && (
-          <MyUploadClass/>
+          <MyUploadClass list={uploadClassData}/>
         )}
         {activeButton === 1 && (
           <MyApplyClass/>

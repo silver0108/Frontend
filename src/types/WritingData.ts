@@ -12,3 +12,7 @@ export interface WritingInfoProps {
 }
 
 export interface PriceProps extends Pick<WritingInfoProps, 'price'>{}
+
+export interface UploadClassProps {
+  list: WritingInfoProps[];
+}
