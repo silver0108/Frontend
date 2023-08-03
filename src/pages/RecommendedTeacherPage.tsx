@@ -1,77 +1,51 @@
-import Lesson from '../components/home/Lesson';
+import Teacher from '../components/home/Teacher';
 import { LessonImg } from "../assets";
 import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
+import {useQuery} from 'react-query';
+import {LessonInfo} from '../types/LessonInfo';
 
-interface LessonData {
-    lessonImg: JSX.Element;
-    lessonComment: string;
-    lessonExplain: string;
-    lessonTeacher: string;
-    lessonScore: string;
-    lessonDistance: string;
+interface TeacherProps {
+    teacherImg : JSX.Element;
+    teacherName : string;
+    teacherCategory : string;
+    teacherDistance : string;
+    teacherScore : string;
+    reviewNumber : string;
 }
 
 export default function RecommendedTeacherPage() {
+
+    let recommendedTeacherList;
     
-    // api get 해올 부분
-    const teacerList: LessonData[] = [
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        }
-    ]
+    const { data, isLoading, error } = useQuery('lectures', fetchLesson);
+
+    async function fetchLesson() {
+        const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/lectures?sort=recommended`);
+        const data = await response.json();
+        return data;
+    }
+
+    if (isLoading) {
+        console.log('loading', data);
+    }
+
+    if (data) {
+      console.log('Data:', data);
+      recommendedTeacherList = data;
+    }
+
+    if (error) {
+        console.log('error', data);
+    }
     
+    
+
     return (
       <St.RecommendedTeacherWrapper>
-        <TopBar message = {"추천이 많은 선생님들"} />
-        {teacerList.map((lesson, idx) => (
-            <Lesson key={idx} {...lesson} />
+        <TopBar message = {"추천이 많은 돌봄이들"} />
+        {recommendedTeacherList.map((lesson: LessonInfo, idx: number) => (
+            <Teacher key={idx} {...lesson} />
         ))}
       </St.RecommendedTeacherWrapper>
     );
@@ -79,7 +53,5 @@ export default function RecommendedTeacherPage() {
 
 const St = {
     RecommendedTeacherWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }

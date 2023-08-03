@@ -3,21 +3,24 @@ import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguag
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
 
-interface TeacherProps {
-    teacherImg: JSX.Element;
-    teacherName: string;
-    teacherScore: number;
+interface TeacherInfo {
+    id: number;
+    name: string;
+    rating: number;
+    imageUrl: string;
+    gender: string;
+  
 }
 
-export default function TeacherProfile(props: TeacherProps) {
+export default function TeacherProfile(props: TeacherInfo) {
 
-    const { teacherImg, teacherName, teacherScore } = props;
+    const {id, name, rating, imageUrl, gender} = props;
 
     return (
         <St.TeacherWrapper>
-            <St.TeacherImg> {teacherImg} </St.TeacherImg>
-            <St.TeacherName> {teacherName} </St.TeacherName> 
-            <St.TeacherScore> ⭐ {teacherScore} </St.TeacherScore> 
+            <St.TeacherImg src = {imageUrl} /> 
+            <St.TeacherName> {name} </St.TeacherName> 
+            <St.TeacherScore> ⭐ {rating} </St.TeacherScore> 
         </St.TeacherWrapper>
   );
 }
@@ -29,23 +32,24 @@ const St = {
     flex-direction: column;
     `,
 
-    TeacherImg: styled.div`
-    width: 4.3rem;
-    height: 4.3rem;
+    TeacherImg: styled.img`
+    width: 5rem;
+    height: 5.3rem;
+    border-radius: 50px;
     `,
 
     TeacherName: styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
-    margin-left: 1rem;
+    margin-top: 1.4rem;
+    margin-left: 0.5rem;
     ${({ theme }) => theme.fonts.body06};
     `,
 
     TeacherScore: styled.div`
     display: flex;
     justify-content: center;
-    margin-left: 1rem;
+    margin-left: 0.1rem;
     margin-top: 0.5rem;
     ${({ theme }) => theme.fonts.body08};
     `,

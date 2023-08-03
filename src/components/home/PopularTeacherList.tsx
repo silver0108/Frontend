@@ -5,50 +5,25 @@ import TeacherProfile from '../common/TeacherProfile';
 import { styled } from 'styled-components';
 import { useNavigate } from "react-router-dom";
 
-interface TeacherData {
-    teacherImg: JSX.Element;
-    teacherName: string;
-    teacherScore: number;
+interface TeacherInfo {
+    id: number;
+    name: string;
+    rating: number;
+    imageUrl: string;
+    gender: string;
 }
 
-export default function PopularTeacherList() {
+export default function PopularTeacherList({ props }: { props: TeacherInfo[] }) {
 
     const navigate = useNavigate();
   
     function MoveToCategory() {
-        // category 로 이동하는 로직
         navigate("/recommended-teacher");
     }
+
     // data 받아오기
-    const teacherList: TeacherData[] = [
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-    ]
-    
-    
+    const teacherList = props;
+
     return (
         <St.PopularLessonListWrapper>
             <St.Header> 💯점 돌봄이들을 소개합니다! </St.Header>
@@ -81,9 +56,10 @@ const St = {
     
     TeacherLists: styled.div`
         display: flex;
-        gap: 2.5rem;
-        margin-left: 2rem;
+        gap: 1.8rem;
+        margin-left: 2.4rem;
         margin-top: 1rem;
+        margin-bottom: 1rem;
     `,
 
     RoundButtonWrapper: styled.div`

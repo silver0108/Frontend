@@ -1,7 +1,10 @@
-import Lesson from '../components/home/Lesson';
+import CategoryLesson from '../components/home/CategoryLesson';
 import { LessonImg } from "../assets";
 import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
+import useGetPopularTeacher from "../hooks/useGetPopularTeacher";
+import {useQuery} from 'react-query';
+import {LessonInfo} from '../types/LessonInfo';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -13,65 +16,39 @@ interface LessonData {
 }
 
 export default function PopularTeacherPage() {
-    // api get 해올 부분
-    const teacerList: LessonData[] = [
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        }
-    ]
+    
+    let popularTeacherList;
+    
+    const { data, isLoading, error } = useQuery('lectures', fetchLesson);
+
+    async function fetchLesson() {
+        const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/lectures?sort=popular`);
+        const data = await response.json();
+        return data;
+    }
+
+    if (isLoading) {
+        console.log('loading', data);
+    }
+
+    if (data) {
+      console.log('Data:', data);
+      popularTeacherList = data;
+    }
+
+    if (error) {
+        console.log('error', data);
+    }
+    
+    
+    
     
     return (
       <St.PopularTeacherWrapper>
         
-        <TopBar message = {"인기 급상승 수업들"} />
-        {teacerList.map((lesson, idx) => (
-            <Lesson key={idx} {...lesson} />
+        <TopBar message = {"인기 급상승 돌봄이들"} />
+        {popularTeacherList && popularTeacherList.map((lesson: LessonInfo, idx: number) => (
+            <CategoryLesson key={idx} {...lesson} />
         ))}
       </St.PopularTeacherWrapper>
     );
@@ -79,7 +56,5 @@ export default function PopularTeacherPage() {
 
 const St = {
     PopularTeacherWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
     `
 }

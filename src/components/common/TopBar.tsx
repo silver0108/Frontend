@@ -29,11 +29,11 @@ const St = {
   align-items: center;
 
   position: relative;
-  
-  height: 6rem;
-  color: black;
 
-  ${({ theme }) => theme.fonts.body06};
+  height: 6rem;
+  margin-bottom: 2rem;
+  color: black;
+  ${({ theme }) => theme.fonts.body03};
   `,
 
   BackBtnIc : styled(BackBtnIcon)`

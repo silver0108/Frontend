@@ -14,14 +14,34 @@ interface LessonData {
     lessonDistance: string;
 }
 
-export default function CloseDistanceLessonList() {
+// 실제 객체 interface
+interface LessonInfo {
+    id: number;
+    userId: number;
+    categoryId: number;
+    title: string;
+    description: string;
+    distance: number;
+    participants: number;
+    maxParticipants: number;
+    talent: string;
+    hashtags: string;
+    price: number;
+    imageUrl: null;
+    createdAt: string;
+}
+
+export default function CloseDistanceLessonList({ props }: { props: LessonInfo[] }) {
     const navigate = useNavigate();
   
     function MoveToCategory() {
-      // category 로 이동하는 로직
       navigate(`/close-distance`);
     }
+
     // data 받아오기
+    console.log('props', props);
+
+    // dummy list
     const popularList: LessonData[] = [
         {
             lessonImg: <LessonImg/>,

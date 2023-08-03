@@ -5,6 +5,7 @@ import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
 import { useNavigate } from "react-router-dom";
 
+// dummy data interface
 interface LessonData {
     lessonImg: JSX.Element;
     lessonComment: string;
@@ -14,15 +15,35 @@ interface LessonData {
     lessonDistance: string;
 }
 
-export default function PopularLessonList() {
+// 실제 객체 interface
+interface LessonInfo {
+    id: number;
+    userId: number;
+    categoryId: number;
+    title: string;
+    description: string;
+    distance: number;
+    participants: number;
+    maxParticipants: number;
+    talent: string;
+    hashtags: string;
+    price: number;
+    imageUrl: null;
+    createdAt: string;
+}
+
+export default function PopularLessonList({ props }: { props: LessonInfo[] }) {
 
     const navigate = useNavigate();
   
     function MoveToCategory() {
-        // category 로 이동하는 로직
         navigate("/popular-teacher");
     }
+
     // data 받아오기
+    console.log('props', props);
+
+    // dummy list
     const popularList: LessonData[] = [
         {
             lessonImg: <LessonImg/>,
