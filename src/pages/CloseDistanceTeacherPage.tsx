@@ -1,7 +1,8 @@
-import Lesson from '../components/home/Lesson';
+import CategoryLesson from '../components/home/CategoryLesson';
 import { LessonImg } from "../assets";
 import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
+import {useQuery} from 'react-query';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -13,65 +14,38 @@ interface LessonData {
 }
 
 export default function CloseDistanceTeacherPage() {
-    // api get 해올 부분
-    const teacerList: LessonData[] = [
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        }
-    ]
+
+    let closeDistanceList;
+    
+    const { data, isLoading, error } = useQuery('lectures', fetchLesson);
+
+    async function fetchLesson() {
+        const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/lectures?sort=distance`);
+        const data = await response.json();
+        return data;
+    }
+
+    if (isLoading) {
+        console.log('loading', data);
+    }
+
+    if (data) {
+      console.log('Data:', data);
+      closeDistanceList = data;
+    }
+
+    if (error) {
+        console.log('error', data);
+    }
+    
+    
     
     return (
       <St.CloseDistanceTeacherWrapper>
 
         <TopBar message = {"거리가 가까운 돌봄이들"} />
-        {teacerList.map((lesson, idx) => (
-            <Lesson key={idx} {...lesson} />
+        {closeDistanceList.map((lesson, idx) => (
+            <CategoryLesson key={idx} {...lesson} />
         ))}
       </St.CloseDistanceTeacherWrapper>
     );
