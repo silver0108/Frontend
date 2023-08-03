@@ -37,6 +37,8 @@ const St = {
         width: 7.3rem;
         height: 7.3rem;
         margin-right: 0.8rem;
+
+        border-radius: 50px;
     `,
 
     TeacherExplanation: styled.div`

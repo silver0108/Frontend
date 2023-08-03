@@ -3,6 +3,7 @@ import { LessonImg } from "../assets";
 import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
 import {useQuery} from 'react-query';
+import {LessonInfo} from '../types/LessonInfo';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -44,7 +45,7 @@ export default function CloseDistanceTeacherPage() {
       <St.CloseDistanceTeacherWrapper>
 
         <TopBar message = {"거리가 가까운 돌봄이들"} />
-        {closeDistanceList.map((lesson, idx) => (
+        {closeDistanceList.map((lesson: LessonInfo, idx: number) => (
             <CategoryLesson key={idx} {...lesson} />
         ))}
       </St.CloseDistanceTeacherWrapper>

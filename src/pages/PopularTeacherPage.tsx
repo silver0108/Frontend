@@ -4,6 +4,7 @@ import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
 import useGetPopularTeacher from "../hooks/useGetPopularTeacher";
 import {useQuery} from 'react-query';
+import {LessonInfo} from '../types/LessonInfo';
 
 interface LessonData {
     lessonImg: JSX.Element;
@@ -46,7 +47,7 @@ export default function PopularTeacherPage() {
       <St.PopularTeacherWrapper>
         
         <TopBar message = {"인기 급상승 돌봄이들"} />
-        {popularTeacherList && popularTeacherList.map((lesson, idx) => (
+        {popularTeacherList && popularTeacherList.map((lesson: LessonInfo, idx: number) => (
             <CategoryLesson key={idx} {...lesson} />
         ))}
       </St.PopularTeacherWrapper>

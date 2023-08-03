@@ -3,6 +3,7 @@ import { LessonImg } from "../assets";
 import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
 import {useQuery} from 'react-query';
+import {LessonInfo} from '../types/LessonInfo';
 
 interface TeacherProps {
     teacherImg : JSX.Element;
@@ -43,7 +44,7 @@ export default function RecommendedTeacherPage() {
     return (
       <St.RecommendedTeacherWrapper>
         <TopBar message = {"추천이 많은 돌봄이들"} />
-        {recommendedTeacherList.map((lesson, idx) => (
+        {recommendedTeacherList.map((lesson: LessonInfo, idx: number) => (
             <Teacher key={idx} {...lesson} />
         ))}
       </St.RecommendedTeacherWrapper>
