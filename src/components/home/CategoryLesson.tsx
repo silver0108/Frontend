@@ -17,13 +17,21 @@ interface LessonProps {
 
 export default function CategoryLesson(props: LessonInfo) {
 
+    let gender;
+
+    if (props?.user?.gender === "woman") {
+        gender = '엄마';
+    } else {
+        gender = '아빠';
+    }
+
     return (
         <St.LessonWrapper>
             <St.LessonImg src = {props?.user?.imageUrl}/>
             <St.LessonExplanation> 
                 <St.Header> {props?.title} </St.Header>
                 <St.HashTags> {props?.hashtags} </St.HashTags>
-                <St.Teacher> {props?.user?.username}엄마 ⭐{props?.user?.rating} </St.Teacher> 
+                <St.Teacher> {props?.user?.username} {gender} ⭐{props?.user?.rating} </St.Teacher> 
                 <St.Distance> 
                     <St.DistanceIc/> 
                     <St.DistanceNum> ~{props?.distance}m </St.DistanceNum> 

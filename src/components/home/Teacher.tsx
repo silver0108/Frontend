@@ -5,12 +5,19 @@ import { styled } from 'styled-components';
 
 export default function Teacher(props: LessonInfo) {
 
-    
+    let gender;
+
+    if (props?.user?.gender === "woman") {
+        gender = '엄마';
+    } else {
+        gender = '아빠';
+    }
+
     return (
         <St.TeacherWrapper>
             <St.TeacherImg  src = {props?.user?.imageUrl} />
             <St.TeacherExplanation> 
-                <St.Name> {props?.user?.username} </St.Name>
+                <St.Name> {props?.user?.username} {gender} </St.Name>
                 <St.Category> {props?.category?.title} </St.Category>
                 <St.Info> 
                     <St.DistanceIc/> 
