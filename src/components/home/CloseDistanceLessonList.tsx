@@ -30,11 +30,11 @@ interface LessonInfo {
     imageUrl: null;
     createdAt: string;
 }
-export default function CloseDistanceLessonList(props: LessonInfo[]) {
+
+export default function CloseDistanceLessonList({ props }: { props: LessonInfo[] }) {
     const navigate = useNavigate();
   
     function MoveToCategory() {
-      // category 로 이동하는 로직
       navigate(`/close-distance`);
     }
 

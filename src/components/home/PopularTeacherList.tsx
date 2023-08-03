@@ -5,64 +5,25 @@ import TeacherProfile from '../common/TeacherProfile';
 import { styled } from 'styled-components';
 import { useNavigate } from "react-router-dom";
 
-interface TeacherData {
-    teacherImg: JSX.Element;
-    teacherName: string;
-    teacherScore: number;
-
-}
-
 interface TeacherInfo {
     id: number;
     name: string;
     rating: number;
     imageUrl: string;
     gender: string;
-  
 }
+
 export default function PopularTeacherList({ props }: { props: TeacherInfo[] }) {
 
     const navigate = useNavigate();
   
     function MoveToCategory() {
-        // category 로 이동하는 로직
         navigate("/recommended-teacher");
     }
+
     // data 받아오기
-
-    console.log("teacher", props);
-
     const teacherList = props;
-    console.log('teacherList', teacherList);
-    // dummy list
-    /*const teacherList: TeacherData[] = [
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-        {
-            teacherImg: <TeacherImg/>,
-            teacherName: "상훈쌤",
-            teacherScore: 4.5,
-        },
-    ]
-    */
+
     return (
         <St.PopularLessonListWrapper>
             <St.Header> 💯점 돌봄이들을 소개합니다! </St.Header>

@@ -9,30 +9,6 @@ import {styled} from 'styled-components';
 import {useNavigate} from 'react-router-dom';
 import {useQuery} from 'react-query';
 
-interface LessonInfo {
-  id: number;
-  userId: number;
-  categoryId: number;
-  title: string;
-  description: string;
-  distance: number;
-  participants: number;
-  maxParticipants: number;
-  talent: string;
-  hashtags: string;
-  price: number;
-  imageUrl: null;
-  createdAt: string;
-}
-
-interface TeacherInfo {
-  id: number;
-  name: string;
-  rating: number;
-  imageUrl: string;
-  gender: string;
-
-}
 export default function Home() {
   
     const navigate = useNavigate();
@@ -41,7 +17,8 @@ export default function Home() {
       navigate('/writing');
     }
 
-    // 인기순, 추천순, 거리순 api 
+    // 인기순, 추천순, 거리순 api 연결
+
     const { data, isLoading, error } = useQuery('featured', fetchLectures);
 
     async function fetchLectures() {
@@ -62,34 +39,8 @@ export default function Home() {
         console.log('error', data);
     }
 
-    const distance = data?.distance;
-    const teachers = data?.teachers;
-    const popular = data?.popular;
+    const {popular, teachers, distance} = data;
 
-    // 전체 Lecture 정보 get
-    /*
-    const { data, isLoading, error } = useQuery('lectures', fetchLectures);
-
-    async function fetchLectures() {
-        const response = await fetch('http://49.247.157.183:3000/api/lectures');
-        const data = await response.json();
-        return data;
-    }
-
-    if (isLoading) {
-        console.log('loading', data);
-    }
-
-    if (data) {
-      console.log('Data:', data);
-  }
-  
-
-    if (error) {
-        console.log('error', data);
-    }
-    
-   */
     return (
 
       <St.HomeWrapper>

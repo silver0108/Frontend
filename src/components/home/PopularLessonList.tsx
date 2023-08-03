@@ -32,12 +32,11 @@ interface LessonInfo {
     createdAt: string;
 }
 
-export default function PopularLessonList(props: LessonInfo[]) {
+export default function PopularLessonList({ props }: { props: LessonInfo[] }) {
 
     const navigate = useNavigate();
   
     function MoveToCategory() {
-        // category 로 이동하는 로직
         navigate("/popular-teacher");
     }
 
