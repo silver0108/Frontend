@@ -95,9 +95,10 @@ const St = {
     
     TeacherLists: styled.div`
         display: flex;
-        gap: 2.5rem;
-        margin-left: 2rem;
+        gap: 1.8rem;
+        margin-left: 2.4rem;
         margin-top: 1rem;
+        margin-bottom: 1rem;
     `,
 
     RoundButtonWrapper: styled.div`
