@@ -1,76 +1,42 @@
-import Lesson from '../components/home/Lesson';
+import CategoryLesson from '../components/home/CategoryLesson';
 import { LessonImg } from "../assets";
 import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
-
-interface LessonData {
-    lessonImg: JSX.Element;
-    lessonComment: string;
-    lessonExplain: string;
-    lessonTeacher: string;
-    lessonScore: string;
-    lessonDistance: string;
-}
+import {useQuery} from 'react-query';
+import {LessonInfo} from '../types/LessonInfo';
 
 export default function MusicPage() {
     // api get 해올 부분
-    const musicList: LessonData[] = [
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        },
-        {
-            lessonImg: <LessonImg/>,
-            lessonComment: "솜사탕 같이 만들어볼까요?",
-            lessonExplain: "아이들에게 꿈같은 시간을 선물합니다.",
-            lessonTeacher: "살구 선생님", 
-            lessonScore: "4.2",
-            lessonDistance: "~234m",
-        }
-    ]
+
+    let musicList;
     
+    const { data, isLoading, error } = useQuery('lectures', fetchLesson);
+
+    async function fetchLesson() {
+        const response = await fetch('http://49.247.157.183:3000/api/lectures?categoryId=3');
+        const data = await response.json();
+        return data;
+    }
+
+    if (isLoading) {
+        console.log('loading', data);
+    }
+
+    if (data) {
+      console.log('Data:', data);
+      musicList = data;
+    }
+
+    if (error) {
+        console.log('error', data);
+    }
+
+   
     return (
       <St.MusicWrapper>
         <TopBar message = {"음악 카테고리"} />
-        {musicList.map((lesson, idx) => (
-            <Lesson key={idx} {...lesson} />
+        {musicList && musicList.map((lesson: LessonInfo, idx: number) => (
+            <CategoryLesson key={idx} {...lesson} />
         ))}
       </St.MusicWrapper>
     );
