@@ -52,7 +52,6 @@ export default function MyUploadClass(props:UploadClassProps) {
         ))}
       </St.ScrollableContainer>
       )}
-      
     </St.MyUploadClassWraper>
   );
 }

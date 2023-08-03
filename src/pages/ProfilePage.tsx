@@ -5,7 +5,8 @@ import MyUploadClass from "../components/profile/MyUploadClass";
 import MyApplyClass from "../components/profile/MyApplyClass";
 import Profile from "../components/profile/Profile";
 import BottomBar from "../components/common/BottomBar";
-import { UploadClassProps, WritingInfoProps } from "../types/WritingData";
+import { ApplyClassInfoProps, UploadClassProps, WritingInfoProps } from "../types/WritingData";
+import { ReviewInfoProps } from "../types/ReviewData";
 
 
 let uploadClassData:WritingInfoProps[] = [
@@ -51,6 +52,36 @@ let uploadClassData:WritingInfoProps[] = [
   }
 ]
 
+let applyClassData:ApplyClassInfoProps[] = [
+  {
+    avatar: "img/profile_default.png",
+    nickname: "실버",
+    rating: 4.5,
+    title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
+    distance: 232
+  }, 
+  {
+    avatar: "img/profile_default.png",
+    nickname: "골드",
+    rating: 1.7,
+    title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
+    distance: 232
+  },
+  {
+    avatar: "img/profile_default.png",
+    nickname: "실버",
+    rating: 4.5,
+    title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
+    distance: 232
+  }, 
+  {
+    avatar: "img/profile_default.png",
+    nickname: "골드",
+    rating: 1.7,
+    title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
+    distance: 232
+  }];
+
 export default function ProfilePage() {
 
   const [activeButton, setActiveButton] = useState<number>(0);
@@ -81,7 +112,7 @@ export default function ProfilePage() {
           <MyUploadClass list={uploadClassData}/>
         )}
         {activeButton === 1 && (
-          <MyApplyClass/>
+          <MyApplyClass list={applyClassData}/>
         )}
       </St.ProfilePageContainer>
       <BottomBar/>
