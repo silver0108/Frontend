@@ -2,20 +2,22 @@ import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguag
 import {LessonInfo} from '../../types/LessonInfo';
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
-
-interface LessonProps {
-    key: number;
-    lessonImg : JSX.Element;
-    lessonComment : string;
-    lessonExplain : string;
-    lessonTeacher : string;
-    lessonScore : string;
-    lessonDistance : string;
-}
-
-
+import {useRecoilState} from 'recoil';
+import {ClassInfoState} from '../../atom/ClassInfo';
+import {useNavigate} from 'react-router-dom';
 
 export default function CategoryLesson(props: LessonInfo) {
+
+    const [information, setInformation] = useRecoilState(ClassInfoState);
+    
+    const navigate = useNavigate();
+
+    function handleInformation() {
+        console.log('프롭스 저장');
+        setInformation(props);
+        console.log(props);
+        navigate('/class');
+    }
 
     let gender;
 
@@ -26,7 +28,7 @@ export default function CategoryLesson(props: LessonInfo) {
     }
 
     return (
-        <St.LessonWrapper>
+        <St.LessonWrapper onClick ={handleInformation}>
             <St.LessonImg src = {props?.user?.imageUrl}/>
             <St.LessonExplanation> 
                 <St.Header> {props?.title} </St.Header>
@@ -69,7 +71,7 @@ const St = {
     `,
     
     Header: styled.header`
-        ${({ theme }) => theme.fonts.body06};
+        ${({ theme }) => theme.fonts.body07};
         color: ${({ theme }) => theme.colors.Black}; 
     `,
 
