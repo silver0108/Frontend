@@ -88,7 +88,7 @@ const Profile = () => {
           <Review list={reviewData}></Review>
         )}
       </St.ProfileContainer>
-      <ParticipationInfo profile={profileData} writing={writingData}></ParticipationInfo>
+      <ParticipationInfo></ParticipationInfo>
 
     </St.ProfileWrapper>
 
