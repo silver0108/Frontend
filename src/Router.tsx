@@ -11,6 +11,7 @@ import RecommendedTeacherPage from "./pages/RecommendedTeacherPage";
 import Class from "./pages/Class";
 import Writing from "./pages/Writing";
 import ProfilePage from "./pages/ProfilePage";
+import LoginPage from "./pages/LoginPage";
 
 
 export default function Router() {
@@ -28,6 +29,7 @@ export default function Router() {
           <Route path="/class" element={<Class/>} />
           <Route path="/writing" element={<Writing/>} />
           <Route path="/profile" element={<ProfilePage/>} />
+          <Route path="/login" element={<LoginPage/>} />
         </Routes>
       </BrowserRouter>
     );

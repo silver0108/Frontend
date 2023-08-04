@@ -6,14 +6,21 @@ const colors = {
   SUB_1: "#E63636",
   SUB_2: "#FBD262",
   Blue: "#0094FF",
+  Blue_2: "#3771DF",
+  Blue_3: "#386ED0",
   Black: "#3C3C3C",
   Black_3: "#9D9D9D",
   White: "#FFFFFF",
   Gray: "#E6E6E6",
+  Gray_2: "#D9D9D9",
+  Gray_3: "#C8C8C8",
+  Gray_4: "#646464",
+  GrayBtn: "#EBEBEB",
   Yellow_1: "#FFDB20",
   Yellow_2: "#FEFBE8",
   Yellow_3: "#EAC955",
   Red: "#FB6262",
+  Kakao: "#FCE302"
 };
 
 export type ColorsTypes = typeof colors;
