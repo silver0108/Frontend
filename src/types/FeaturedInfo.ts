@@ -1,13 +1,10 @@
-export interface LessonInfo {
+export interface FeaturedInfo {
     id: number;
-    userId: number;
-    categoryId: number;
     title: string;
     description: string;
     distance: number;
     participants: number;
     maxParticipants: number;
-    talent: string;
     hashtags: string;
     price: number;
     imageUrl: null;
@@ -26,4 +23,3 @@ export interface LessonInfo {
         imageUrl: null,
     }
 }
-
