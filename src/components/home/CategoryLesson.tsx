@@ -69,7 +69,7 @@ const St = {
     `,
     
     Header: styled.header`
-        ${({ theme }) => theme.fonts.body06};
+        ${({ theme }) => theme.fonts.body07};
         color: ${({ theme }) => theme.colors.Black}; 
     `,
 
