@@ -11,6 +11,7 @@ export default function Category() {
   
   function MoveToCategory(path: string) {
     // category 로 이동하는 로직
+    window.scrollTo(0, 0);
     navigate(path);
   }
 

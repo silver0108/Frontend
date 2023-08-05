@@ -13,6 +13,7 @@ export default function NoContents(props: NoContentsProps) {
   const navigate = useNavigate();
 
   const moveToWriting = () => {
+    window.scrollTo(0, 0);
     navigate("/writing");
   }
 

@@ -11,6 +11,7 @@ export default function TopBar(props: TopBarProps) {
   const navigate = useNavigate();
 
   function handleMoveToBack() {
+    window.scrollTo(0, 0);
     navigate(-1);
   }
   

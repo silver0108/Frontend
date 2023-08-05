@@ -14,6 +14,7 @@ export default function Home() {
     const navigate = useNavigate();
 
     function moveToWriting() {
+      window.scrollTo(0, 0);
       navigate('/writing');
     }
 

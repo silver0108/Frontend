@@ -27,6 +27,7 @@ export default function LoginPage() {
       .then((data) => {
         // 로그인 성공
         setIsLoggedIn(true);
+        window.scrollTo(0, 0);
         navigate('/home');
 
       })

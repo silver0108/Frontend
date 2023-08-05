@@ -4,7 +4,7 @@ import TopBar from '../components/common/TopBar';
 import {styled} from 'styled-components';
 import {useQuery} from 'react-query';
 import {LessonInfo} from '../types/LessonInfo';
-
+import { useEffect } from 'react';
 interface LessonData {
     lessonImg: JSX.Element;
     lessonComment: string;
@@ -38,8 +38,6 @@ export default function CloseDistanceTeacherPage() {
     if (error) {
         console.log('error', data);
     }
-    
-    
     
     return (
       <St.CloseDistanceTeacherWrapper>

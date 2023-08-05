@@ -11,6 +11,7 @@ export default function CloseDistanceLessonList({ props }: { props: FeaturedInfo
     const navigate = useNavigate();
   
     function MoveToCategory() {
+      window.scrollTo(0, 0);
       navigate(`/close-distance`);
     }
 
