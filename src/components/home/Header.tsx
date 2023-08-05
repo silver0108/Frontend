@@ -1,14 +1,25 @@
-import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon } from "../../assets";
+import { AllReadIcon, NotReadIcon, SearchIcon, CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguageIcon, CategoryMusicIcon } from "../../assets";
 
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
 
 export default function Header() {
-    // icon import 오류 해결 필요
+  
+  // 유저가 안 읽은 알림이 있는지 확인하는 API
+  let isAlarmExist = true;
+
   return (
     <St.HeaderWrapper>
+
+      <St.IconWrapper>
+        <St.SearchIc />
+        {isAlarmExist ? <St.NotReadIc/> : <St.AllReadIc/>}
+      </St.IconWrapper>
+
+      <St.MainWrapper>
         <St.StarIc/>
         <St.Header> 모아모아 </St.Header>
+      </St.MainWrapper>
     </St.HeaderWrapper>
   );
 }
@@ -16,8 +27,8 @@ export default function Header() {
 const St = {
   HeaderWrapper: styled.div`
     display: flex;
+    flex-direction: column;
     width: 37.5rem;
-    height: 6.4rem;
     padding: 1.5rem;
     margin-bottom: 1rem;
   `,
@@ -30,6 +41,37 @@ const St = {
   StarIc: styled(StarIcon)`
     width: 5rem;
   `,
+
+  IconWrapper: styled.div`
+    display: flex;
+    justify-content: flex-end;
+    
+    padding: 1rem;
+    height: 2.5rem;
+  `,
+
+  MainWrapper: styled.div`
+    display: flex;
+  `,
+
+  AllReadIc: styled(AllReadIcon)`
+    margin-top: 0.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  `,
+
+  NotReadIc: styled(NotReadIcon)`
+  width: 2rem;
+  height: 2rem;
+  `,
+
+  SearchIc: styled(SearchIcon)`
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-right: 1rem;
+  `,
+
+
 };
 
 
