@@ -2,19 +2,25 @@ import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { TeacherImg2 } from "../../assets";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../../firebase";
 
 interface InputUserProps {
   initialValue?: {
     name: string,
+    email: string,
     phonenumber: string,
     place: string,
     gender?: string,
     age?: number,
+    uid: string,
   }
 }
 
 export default function InputProfile (props:InputUserProps) {
   const naviagte = useNavigate();
+
+  const email = auth.currentUser?.email;
+  const uid = auth.currentUser?.uid;
 
   const [name, setName] = useState(props.initialValue?.name || "");
   const [phonenumber, setPhonenumber] = useState(props.initialValue?.phonenumber || "");
@@ -78,7 +84,7 @@ export default function InputProfile (props:InputUserProps) {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (name.length !== 2 || name === "") setShowNameError(true); 
     else setShowNameError(false); 
   
@@ -89,20 +95,39 @@ export default function InputProfile (props:InputUserProps) {
     else setShowPlaceError(false);
 
     if((name.length === 2 || name !== "") &&
-      (phonenumber.length === 11 || phonenumber !== "") &&
-       place !== ""){
-        const data = {
-          name,
-          phonenumber,
-          place,
-          gender,
-          age,
-        };
-        console.log(data);
-        naviagte('/home');
+    (phonenumber.length === 11 || phonenumber !== "") &&
+     place !== ""){
+    
+      const formData = {
+        name: name,
+        email: email,
+        phone: phonenumber,
+        place: place,
+        gender: gender,
+        age: age,
+        uId: uid,
       }
+
+      console.log(formData)
+    try {
+      const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", 
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const reponseData = await response.json();
+      console.log("응답 데이터:", reponseData);
+
+      naviagte('/home');
+
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
   }
-  
+}
   return (
     <St.InputProfileWrapper>
       <St.DescriptionContainer>
@@ -225,9 +250,9 @@ const St = {
     ${({theme}) => theme.fonts.body07};
     color: ${({theme}) => theme.colors.Black};
   `,
-  SecondSentenceContainer: styled.div`
+  SecondSentenceContainer: styled.span`
   `,
-  RedColorSentence: styled.div`
+  RedColorSentence: styled.span`
     ${({theme}) => theme.fonts.body07};
     color: ${({theme}) => theme.colors.Red};
   `,

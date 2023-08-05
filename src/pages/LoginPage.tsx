@@ -21,13 +21,13 @@ export default function LoginPage() {
   }, []);
 
   // 로그인
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((data) => {
         // 로그인 성공
         setIsLoggedIn(true);
-        navigate('/home');
+        moveToSignup();
 
       })
       .catch((error) => {
@@ -35,6 +35,16 @@ export default function LoginPage() {
         console.log(error);
       });
   };
+
+  const moveToSignup = async () => {
+    const uid = auth.currentUser?.uid;
+
+    const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/user-isExist?uId=${uid}`);
+    const reponseData = await response.json();
+    
+    if(reponseData) navigate('/home');
+    else navigate('/signup')
+  }
 
   return (
     <St.LoginPageWrapper>
