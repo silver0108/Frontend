@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { styled } from "styled-components";
 import { TeacherImg2 } from "../../assets";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { useRecoilState } from "recoil";
 import { UserInfoState } from "../../atom/UserInfo";
-
+import {DefaultTeacherImg} from '../../assets';
 interface InputUserProps {
   initialValue?: {
     name: string,
@@ -124,14 +124,12 @@ export default function InputProfile (props:InputUserProps) {
       const reponseData = await response.json();
       setUserData(reponseData);
 
-      //naviagte('/home');
+      naviagte('/home');
 
     } catch (error) {
       console.error("Error submitting data:", error);
     }
   }
-  
-  handleModalOpen();
 }
 
   // 작성완료 버튼 누르면, 프로필 사진 업로드 모달 오픈
@@ -145,6 +143,26 @@ export default function InputProfile (props:InputUserProps) {
     setShowModal(false);
   }
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  //  사진 선택
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  function handleChooseFromAlbum () {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  function handleFileInputChange (e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl);
+    }
+  };
+
   return (
     <St.InputProfileWrapper>
       <St.DescriptionContainer>
@@ -155,7 +173,13 @@ export default function InputProfile (props:InputUserProps) {
         </St.SecondSentenceContainer>
       </St.DescriptionContainer>
       
-      <St.ImageContainer><TeacherImg2/></St.ImageContainer>
+      <St.ImageContainer onClick = {handleModalOpen}>
+      {selectedImage ? (
+          <St.SelectedImage src={selectedImage} />
+        ) : (
+          <DefaultTeacherImg />
+        )}
+      </St.ImageContainer>
       
       <St.InputContainer>
         <St.WritingSection>
@@ -167,7 +191,7 @@ export default function InputProfile (props:InputUserProps) {
                : null}
           </St.WritingHeaderContainer>
           <St.WritingInput 
-            placeholder='준희'
+            placeholder='이름을 입력하세요'
             value={name}
             onChange={handleNameChange} 
           >
@@ -237,12 +261,18 @@ export default function InputProfile (props:InputUserProps) {
           
       </St.InputContainer>
       <St.CompleteButton onClick={handleSubmit}>작성 완료</St.CompleteButton>
+      
+      <input
+        type="file"
+        style={{ display: "none" }}
+        ref={fileInputRef}
+        accept="image/*"
+        onChange={handleFileInputChange}
+      />
       {showModal && (
         <St.ModalWrapper>
-          <St.ModalContent>
-            <St.ModalText>현재는 동작구에서만 가능합니다</St.ModalText>
-            <St.ModalButton onClick={handleModalClose}>확인</St.ModalButton>
-          </St.ModalContent>
+          <St.ModalContent  onClick={handleChooseFromAlbum}> 앨범에서 선택 </St.ModalContent>
+          <St.ModalContent onClick={handleModalClose}> 닫기 </St.ModalContent>
         </St.ModalWrapper>
       )}
     
@@ -364,35 +394,38 @@ const St = {
     }
   `,
   ModalWrapper: styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
   position: fixed;
   top: 0;
   left: 0;
+  padding: 4rem;
+
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `,
 
 ModalContent: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  width: 25rem;
+  height: 3.5rem;
+  margin-bottom: 0.5rem;
+
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-`,
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
 
-ModalText: styled.p`
-  font-size: 16px;
-  margin-bottom: 10px;
+  ${({ theme }) => theme.fonts.body06};
 `,
-
-ModalButton: styled.button`
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-`,
+  SelectedImage: styled.img`
+    width: 6rem;
+  `,
 }
