@@ -2,18 +2,26 @@ import { AllReadIcon, NotReadIcon, SearchIcon, CategoryArtIcon, CategoryEtcIcon,
 
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
+import {useNavigate} from 'react-router-dom';
 
 export default function Header() {
   
   // 유저가 안 읽은 알림이 있는지 확인하는 API
   let isAlarmExist = true;
 
+  // 알람 버튼 클릭 시 이동
+  const navigate = useNavigate();
+
+  function handleMoveToAlarmList () {
+    navigate('/alarm-list');
+  }
+
   return (
     <St.HeaderWrapper>
 
       <St.IconWrapper>
         <St.SearchIc />
-        {isAlarmExist ? <St.NotReadIc/> : <St.AllReadIc/>}
+        {isAlarmExist ? <St.NotReadIc onClick = {handleMoveToAlarmList} /> : <St.AllReadIc onClick = {handleMoveToAlarmList} />}
       </St.IconWrapper>
 
       <St.MainWrapper>
@@ -61,8 +69,8 @@ const St = {
   `,
 
   NotReadIc: styled(NotReadIcon)`
-  width: 2rem;
-  height: 2rem;
+  width: 2.2rem;
+  height: 2.3rem;
   `,
 
   SearchIc: styled(SearchIcon)`

@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import AlarmList from './pages/AlarmList';
 import Alarm from './pages/Alarm';
 import ArtPage from "./pages/ArtPage";
 import Class from "./pages/Class";
@@ -18,6 +19,7 @@ export default function Router() {
     return (
       <BrowserRouter>
         <Routes>
+          <Route path="/alarm-list" element={<AlarmList />} />
           <Route path="/alarm" element={<Alarm />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/home" element={<Home />} /> 

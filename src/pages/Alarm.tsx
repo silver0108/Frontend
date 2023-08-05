@@ -4,7 +4,7 @@ import {styled} from 'styled-components';
 import {useQuery} from 'react-query';
 
 export default function Alarm() {
-
+    // 푸시알람 허용 페이지 
     return (
       <St.AlarmWrapper>
         <AlarmContainer/>
