@@ -8,7 +8,7 @@ export default function ParentParticipation() {
   const [data, setData] = useRecoilState(ClassInfoState)
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [isApplied, setIsApplied] = useState<boolean>(false);
+  const [isApplied, setIsApplied] = useState<'true' | 'false'>('false');
   const [modalType, setModalType] = useState<'apply' | 'cancel' | ''>('');
 
   const handleCloseModal = () => {
@@ -24,7 +24,7 @@ export default function ParentParticipation() {
           ...data,
           participants: data.participants+1
         }))
-        setIsApplied(true);
+        setIsApplied('true');
         setModalType('apply');
       }
     }
@@ -36,14 +36,14 @@ export default function ParentParticipation() {
       ...data,
       participants: data.participants-1
     }))
-    setIsApplied(false);
+    setIsApplied('false');
     setModalOpen(false);
   }
 
   return (
     <St.ParentParticipationWrapper>
       <StChatButton>채팅하기</StChatButton>
-      <StApplicationButton onClick={handleApplication} isApplied={isApplied}>
+      <StApplicationButton onClick={handleApplication} isapplied={isApplied}>
         {isApplied ? '취소하기' : '신청하기'}
       </StApplicationButton>
       
@@ -106,10 +106,10 @@ const StChatButton = styled(St.CommonButton)`
   background-color: #E6E6E6;
 `
 
-const StApplicationButton = styled(St.CommonButton)<{ isApplied: boolean }>`
-  background-color: ${({ theme, isApplied }) => 
-    (isApplied ? theme.colors.SUB_1 : theme.colors.SUB_2)};
-  color: ${({ theme, isApplied }) => (isApplied ? "white" : "black")};
+const StApplicationButton = styled(St.CommonButton)<{ isapplied: string }>`
+  background-color: ${({ theme, isapplied }) => 
+    (isapplied === 'true' ? theme.colors.SUB_1 : theme.colors.SUB_2)};
+  color: ${({ theme, isapplied }) => (isapplied === 'true'? "white" : "black")};
 `
 const StConfirmButton = styled(St.CommonButton)`
   width: 100%;
