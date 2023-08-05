@@ -2,7 +2,7 @@ import { StarIcon } from '../../assets';
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import {getToken} from 'firebase/messaging';
-import {messaging} from '../../utils/settingFCM';
+import {messaging} from '../../firebase';
 import { registerServiceWorker } from "../../utils/notification";
 import { AppCheckTokenResult } from "firebase/app-check";
 import { useEffect, useState } from "react";
