@@ -13,12 +13,12 @@ import Writing from "./pages/Writing";
 import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/LoginPage";
 
-
 export default function Router() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<Home />} /> 
           <Route path="/art" element={<ArtPage />} />
           <Route path="/music" element={<MusicPage />} />
           <Route path="/language" element={<LanguagePage />} />
