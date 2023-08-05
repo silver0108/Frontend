@@ -8,9 +8,19 @@ import {WritingIcon} from '../assets';
 import {styled} from 'styled-components';
 import {useNavigate} from 'react-router-dom';
 import {useQuery} from 'react-query';
-
+import { useState } from 'react';
+import {LocationModalState} from '../atom/LocationModal';
+import {useRecoilState} from 'recoil';
 export default function Home() {
+
+  // 모달
+
+  const [showModal, setShowModal] = useRecoilState(LocationModalState);
   
+  function handleModalClose() {
+    setShowModal(false);
+  }
+
     const navigate = useNavigate();
 
     function moveToWriting() {
@@ -54,6 +64,18 @@ export default function Home() {
         {distance && <CloseDistanceLessonList props={distance} />}
         <BottomBar />
         <St.WritingIc onClick = {()=> moveToWriting()}/>
+
+        {showModal && (
+        <St.ModalWrapper>
+          <St.ModalContent>
+            <St.ModalText>현재는 <span> 동작구 대방동 </span>에서만</St.ModalText>
+            <St.ModalText>서비스 이용이 가능합니다</St.ModalText>
+            <St.ModalSmallText> 서비스 초기 단계이기에, </St.ModalSmallText> 
+            <St.ModalSmallText> 특정 지역에서만 서비스 이용이 가능합니다. </St.ModalSmallText>
+            <St.ModalButton onClick={handleModalClose}>확인</St.ModalButton>
+          </St.ModalContent>
+        </St.ModalWrapper>
+      )}
       </St.HomeWrapper>
     );
 }
@@ -70,5 +92,59 @@ const St = {
 
   width: 3.5rem;
   height: 3.5rem;
-  `
+  `,
+
+  ModalWrapper: styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+`,
+
+ModalContent: styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  width: 22rem;
+  height: 20rem;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+`,
+
+ModalText: styled.p`
+  margin-bottom: 0.5rem;
+  ${({ theme }) => theme.fonts.body06};
+  color: black;
+
+  span {
+    color: red;
+  }
+`,
+
+ModalSmallText: styled.p`
+  margin-top: 0.2rem;
+  ${({ theme }) => theme.fonts.body07};
+  color: ${({ theme }) => theme.colors.Black}; 
+`,
+
+ModalButton: styled.button`
+  margin-top: 2rem;
+  width: 17rem;
+  height: 3rem;
+
+  ${({ theme }) => theme.fonts.body07};
+  background-color: ${({ theme }) => theme.colors.Main}; 
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+`,
 }
