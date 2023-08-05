@@ -73,8 +73,12 @@ const St = {
     padding: 1rem;
   `,
   ProfileImage: styled.img`
-    width: 8rem;
+    width: 8rem; 
+    height: 8rem;
+    
     border-radius: 50%;
+    
+    object-fit: cover; /
   `,
   ProfileInfoContents: styled.div`
     display: flex;

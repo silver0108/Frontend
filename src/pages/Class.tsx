@@ -10,26 +10,6 @@ import { WritingInfoProps } from "../types/WritingData";
 import { ReviewInfoProps } from '../types/ReviewData';
 import TopBar from '../components/common/TopBar';
 
-
-let profileData:ProfileInfoProps = {
-  nickname: '상훈',
-  phonenumber: '01012345678',
-  place: '서울 스페이스 살림 다목적홀',
-  gender: '남성',
-  age: 30,
-}
-
-let writingData:WritingInfoProps = {
-  title: '배드민턴 쉽게 가르쳐드려요!',
-  personnel: 3,
-  category: '운동',
-  tag: ['배드민턴', '8~12세', '정원 4명'],
-  appeal: '- 육상 운동 선수 출신\n\
-          - 10분 기본 체조\n\
-          - 엄격 X',
-  price: 15000
-}
-
 let reviewData:ReviewInfoProps[] = [
   {
     avatar: "img/profile_default.png",
@@ -66,9 +46,8 @@ const Profile = () => {
   return (
     <St.ProfileWrapper>
       <TopBar message = {"선생님 프로필"}/>
-
       <St.ProfileContainer>
-        <ProfileInfo profile={profileData} writing={writingData}></ProfileInfo>
+        <ProfileInfo></ProfileInfo>
         <St.ProfileContentsButtonContainer>
           <St.ProfileContentsButton 
             active={(activeButton === 0).toString()}
@@ -82,7 +61,7 @@ const Profile = () => {
             </St.ProfileContentsButton>
         </St.ProfileContentsButtonContainer>
         {activeButton === 0 && (
-          <ClassAppeal contents={writingData}></ClassAppeal>
+          <ClassAppeal></ClassAppeal>
         )}
         {activeButton === 1 && (
           <Review list={reviewData}></Review>
@@ -132,5 +111,4 @@ const St = {
 
     cursor: pointer;
   `
-
 }
