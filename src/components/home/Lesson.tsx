@@ -2,6 +2,10 @@ import { CategoryArtIcon, CategoryEtcIcon, CategoryExerciseIcon, CategoryLanguag
 import {FeaturedInfo} from '../../types/FeaturedInfo';
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
+import {useRecoilState} from 'recoil';
+import {ClassInfoState} from '../../atom/ClassInfo';
+import {useNavigate} from 'react-router-dom';
+import { LessonInfo } from '../../types/LessonInfo'; 
 
 interface LessonProps {
     key: number;
@@ -25,8 +29,48 @@ export default function Lesson(props: FeaturedInfo) {
         gender = '아빠';
     }
 
+    const [information, setInformation] = useRecoilState(ClassInfoState);
+    
+    const navigate = useNavigate();
+
+    const lessonInfo: LessonInfo = {
+        id: props.id,
+        userId: -1,
+        categoryId: -1,
+        title: props.title,
+        description: props.description,
+        distance: props.distance,
+        participants: props.participants,
+        maxParticipants: props.maxParticipants,
+        talent: '', // 빈 문자열로 초기화
+        hashtags: props.hashtags,
+        price: props.price,
+        imageUrl: null,
+        createdAt: props.createdAt,
+        user: {
+            id: props.user.id,
+            username: props.user.username,
+            imageUrl: props.user.imageUrl,
+            rating: props.user.rating,
+            gender: props.user.gender,
+        },
+        category: {
+            id: props.category.id,
+            title: props.category.title,
+            subCategory: props.category.subCategory,
+            imageUrl: null,
+        },
+    };
+
+    function handleInformation() {
+        console.log('프롭스 저장');
+        setInformation(lessonInfo);
+        console.log(props);
+        navigate('/class');
+    }
+
     return (
-        <St.LessonWrapper>
+        <St.LessonWrapper onClick = {handleInformation}>
             <St.LessonImg src = {props?.user?.imageUrl}/>
             <St.LessonExplanation> 
                 <St.Header> {props?.title} </St.Header>
