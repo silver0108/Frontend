@@ -7,10 +7,12 @@ import { useRecoilValue } from 'recoil';
 import { ClassInfoState } from '../../atom/ClassInfo';
 import ParentParticipation from './ParentParticipation';
 import TeacherParticipation from './TeacherParticipation';
+import { UserInfoState } from '../../atom/UserInfo';
 
 const ParticipationInfo = () => {
   const data = useRecoilValue(ClassInfoState);
-
+  const userId = useRecoilValue(UserInfoState).id;
+  console.log(userId)
   const justifyContentStyle = data.participants > data.maxParticipants ? "center" : "space-between";
 
   return (
@@ -22,7 +24,7 @@ const ParticipationInfo = () => {
             <St.ParticipationInfoPrice>{data.price}원</St.ParticipationInfoPrice>
           </St.ParticipationInfoContainer>
           <St.ParticipationButtonContainer>
-            {(data.user.id).toString() === (auth.currentUser?.uid) ? 
+            {data.user.id !== userId ? 
               <ParentParticipation/>
             : 
               <TeacherParticipation/>
