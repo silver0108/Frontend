@@ -2,45 +2,54 @@ import styled from "styled-components";
 
 import { ProfileProps } from "../../types/ProfileData";
 import { DistanceIcon, StarIcon_1 } from "../../assets";
+import { useRecoilValue } from "recoil";
+import { ClassInfoState } from "../../atom/ClassInfo";
 
 
-const ProfileInfo = (props:ProfileProps) => {
-  const { profile, writing } = props;
+const ProfileInfo = () => {
   
-  const nickname = profile.nickname;
-  const age = profile.age;
-  const category = writing.category;
-  const tags: string[] = writing.tag;
+  const data = useRecoilValue(ClassInfoState);
 
   return (
     <St.ProfileInfoWrapper>
       <St.ProfileInfoContainer>
-        <St.ProfileInfoImage>
-          <img src={`img/profile_default.png`}></img>
-        </St.ProfileInfoImage>
+        <St.ProfileImageContainer>
+          <St.ProfileImage src={data.user.imageUrl}></St.ProfileImage>
+        </St.ProfileImageContainer>
         <St.ProfileInfoContents>
           <St.ProfileInfoBox>
-            <St.ProfileInfoName>{nickname}</St.ProfileInfoName>
-            <St.ProfileInfoAge>{age}대 남성</St.ProfileInfoAge>
+            {data.user.gender == 'man' ? (
+              <>
+                <St.ProfileInfoName>{data.user.username} 아빠</St.ProfileInfoName>
+                <St.ProfileInfoAge>40대 남성</St.ProfileInfoAge>
+              </>
+            ):(
+              <>
+                <St.ProfileInfoName>{data.user.username} 엄마</St.ProfileInfoName>
+                <St.ProfileInfoAge>40대 여성</St.ProfileInfoAge>
+              </>
+            )}
+            
           </St.ProfileInfoBox>
-          <St.ProfileInfoCategory>{category}</St.ProfileInfoCategory>
+          <St.ProfileInfoCategory>{data.category.title}</St.ProfileInfoCategory>
           <St.ProfileInfoEtcContainer>
             <St.ProfileDistanceContainer>
               <DistanceIcon/>
-              <St.ProfileInfoDistance>거리</St.ProfileInfoDistance>
+              <St.ProfileInfoDistance>~{data.distance}m</St.ProfileInfoDistance>
             </St.ProfileDistanceContainer>
             <St.ProfileRatingContiner>
               <StarIcon_1/>
-              <St.ProfileInfoRating>별점 </St.ProfileInfoRating>
+              <St.ProfileInfoRating>{data.user.rating} </St.ProfileInfoRating>
             </St.ProfileRatingContiner>
           </St.ProfileInfoEtcContainer>
         </St.ProfileInfoContents>
       </St.ProfileInfoContainer>
 
       <St.ProfileInfoTag>
-        {tags.map((tag, index) => (
+        {/* {data.hashtags.map((tag, index) => (
             <St.ProfileInfoTagContents key={index}>{tag}</St.ProfileInfoTagContents>
-          ))}
+        ))} */}
+        {data.hashtags}
       </St.ProfileInfoTag>
     </St.ProfileInfoWrapper>
   );
@@ -51,7 +60,6 @@ export default ProfileInfo;
 const St = {
   ProfileInfoWrapper: styled.div`
     width: 100%;
-    // height: 100vh;
 
     display: flex;
     flex-direction: column;
@@ -61,8 +69,16 @@ const St = {
   ProfileInfoContainer: styled.div`
     display: flex;
   `,
-  ProfileInfoImage: styled.div`
+  ProfileImageContainer: styled.div`
     padding: 1rem;
+  `,
+  ProfileImage: styled.img`
+    width: 8rem; 
+    height: 8rem;
+    
+    border-radius: 50%;
+    
+    object-fit: cover; /
   `,
   ProfileInfoContents: styled.div`
     display: flex;
@@ -85,7 +101,9 @@ const St = {
     
   `,
   ProfileInfoCategory: styled.div`
-    margin: 0.5rem 0;
+    margin: 0.4rem 0;
+
+    ${({ theme }) => theme.fonts.body08};
   `,
 
   ProfileInfoEtcContainer: styled.div`
@@ -109,7 +127,7 @@ const St = {
     ${({ theme }) => theme.fonts.body07};
   `,
   ProfileInfoTag: styled.div`
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     ${({ theme }) => theme.fonts.body07};
   `,
 

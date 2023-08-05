@@ -7,6 +7,7 @@ import CloseDistanceTeacherPage from "./pages/CloseDistanceTeacherPage";
 import ExercisePage from "./pages/ExercisePage";
 import Home from "./pages/Home";
 import LanguagePage from "./pages/LanguagePage";
+import LoginPage from "./pages/LoginPage";
 import MusicPage from "./pages/MusicPage";
 import PopularTeacherPage from "./pages/PopularTeacherPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -17,8 +18,9 @@ export default function Router() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/alarm" element={<Alarm />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<Home />} /> 
           <Route path="/art" element={<ArtPage />} />
           <Route path="/music" element={<MusicPage />} />
           <Route path="/language" element={<LanguagePage />} />
@@ -29,6 +31,7 @@ export default function Router() {
           <Route path="/class" element={<Class/>} />
           <Route path="/writing" element={<Writing/>} />
           <Route path="/profile" element={<ProfilePage/>} />
+          <Route path="/login" element={<LoginPage/>} />
         </Routes>
       </BrowserRouter>
     );
