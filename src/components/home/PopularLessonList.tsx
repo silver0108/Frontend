@@ -11,6 +11,7 @@ export default function PopularLessonList({ props }: { props: FeaturedInfo[] }) 
     const navigate = useNavigate();
   
     function MoveToCategory() {
+        window.scrollTo(0, 0);
         navigate("/popular-teacher");
     }
 

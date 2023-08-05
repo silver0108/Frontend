@@ -18,6 +18,7 @@ export default function PopularTeacherList({ props }: { props: TeacherInfo[] }) 
     const navigate = useNavigate();
   
     function MoveToCategory() {
+        window.scrollTo(0, 0);
         navigate("/recommended-teacher");
     }
 
