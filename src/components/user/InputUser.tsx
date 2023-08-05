@@ -124,13 +124,27 @@ export default function InputProfile (props:InputUserProps) {
       const reponseData = await response.json();
       setUserData(reponseData);
 
-      naviagte('/home');
+      //naviagte('/home');
 
     } catch (error) {
       console.error("Error submitting data:", error);
     }
   }
+  
+  handleModalOpen();
 }
+
+  // 작성완료 버튼 누르면, 프로필 사진 업로드 모달 오픈
+  const [showModal, setShowModal] = useState(false);
+
+  function handleModalOpen() {
+    setShowModal(true);
+  }
+
+  function handleModalClose() {
+    setShowModal(false);
+  }
+
   return (
     <St.InputProfileWrapper>
       <St.DescriptionContainer>
@@ -223,6 +237,15 @@ export default function InputProfile (props:InputUserProps) {
           
       </St.InputContainer>
       <St.CompleteButton onClick={handleSubmit}>작성 완료</St.CompleteButton>
+      {showModal && (
+        <St.ModalWrapper>
+          <St.ModalContent>
+            <St.ModalText>현재는 동작구에서만 가능합니다</St.ModalText>
+            <St.ModalButton onClick={handleModalClose}>확인</St.ModalButton>
+          </St.ModalContent>
+        </St.ModalWrapper>
+      )}
+    
     </St.InputProfileWrapper>
   );
 }
@@ -340,4 +363,36 @@ const St = {
       background-color: ${({ theme }) => theme.colors.Gray_3};
     }
   `,
+  ModalWrapper: styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`,
+
+ModalContent: styled.div`
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+`,
+
+ModalText: styled.p`
+  font-size: 16px;
+  margin-bottom: 10px;
+`,
+
+ModalButton: styled.button`
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`,
 }
