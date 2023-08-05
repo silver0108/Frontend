@@ -30,3 +30,5 @@ export { ReactComponent as AllReadIcon } from './icon/allReadIcon.svg';
 export { ReactComponent as NotReadIcon } from './icon/notReadIcon.svg';
 export { ReactComponent as SearchIcon } from './icon/searchIcon.svg';
 
+export { ReactComponent as DefaultTeacherImg } from './image/defaultTeacherImg.svg';
+
