@@ -3,6 +3,8 @@ import { styled } from "styled-components";
 import { TeacherImg2 } from "../../assets";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
+import { useRecoilState } from "recoil";
+import { UserInfoState } from "../../atom/UserInfo";
 
 interface InputUserProps {
   initialValue?: {
@@ -12,12 +14,13 @@ interface InputUserProps {
     place: string,
     gender?: string,
     age?: number,
-    uid: string,
   }
 }
 
 export default function InputProfile (props:InputUserProps) {
   const naviagte = useNavigate();
+
+  const [useData, setUserData] = useRecoilState(UserInfoState);
 
   const email = auth.currentUser?.email;
   const uid = auth.currentUser?.uid;
@@ -119,7 +122,7 @@ export default function InputProfile (props:InputUserProps) {
       });
       
       const reponseData = await response.json();
-      console.log("응답 데이터:", reponseData);
+      setUserData(reponseData);
 
       naviagte('/home');
 
