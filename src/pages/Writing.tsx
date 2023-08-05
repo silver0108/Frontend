@@ -1,14 +1,31 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import TopBar from '../components/common/TopBar';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { UserInfoState } from '../atom/UserInfo';
+
+interface CategoryItem {
+  name: string;
+  categoryID: number;
+}
 
 const Writing = () => {
 
-  const categoryList:string[] = ['운동', '언어', '음악', '미술', '기타'];
+  const navigate = useNavigate();
+  const userId = useRecoilValue(UserInfoState).id;
+
+  const categoryList: CategoryItem[] = [
+    { name: '운동', categoryID: 2 },
+    { name: '언어', categoryID: 1 },
+    { name: '음악', categoryID: 3 },
+    { name: '미술', categoryID: 4 },
+    { name: '기타', categoryID: 5 },
+  ];
 
   const [ title, setTitle ] = useState<string>('');
   const [ num, setNum ] = useState<number>(0);
-  const [ category, setCategory] = useState<string>('');
+  const [ category, setCategory] = useState<number>(0);
   const [ hashtag, setHashtag] = useState<string>('');
   const [ appeal, setAppeal ] = useState<string>('');
   const [ price, setPrice ] = useState<number | undefined>(undefined);
@@ -27,13 +44,13 @@ const Writing = () => {
   }, [title, num, category, hashtag, appeal, price]);
 
 
-  const handleCategoryClick = (item: string, index: number) => {
+  const handleCategoryClick = (categoryId: number, index: number) => {
     if (selectedCategory === index) {
       setSelectedCategory(null);
-      setCategory('');
+      setCategory(0);
     } else {
       setSelectedCategory(index);
-      setCategory(item);
+      setCategory(categoryId);
     }
   };
 
@@ -62,17 +79,36 @@ const Writing = () => {
     setPrice(isNaN(inputPrice) ? undefined : inputPrice);
   }
 
-  const handleSubmit = () => {
-    const data = {
-      title,
-      num,
-      category,
-      hashtag,
-      appeal,
-      price,
+  const handleSubmit = async () => {
+    const formData = {
+      title: title,
+      userId: userId,
+      categoryId: category,
+      description: appeal,
+      hashtags: hashtag,
+      maxParticipants: num,
+      price: price,
     };
 
-    console.log(data);
+    console.log(formData)
+    try {
+      const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/lecture`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", 
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const responseData = await response.json();
+      console.log(responseData);
+      
+      navigate('/home');
+
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
+
   }
   
   return (
@@ -119,8 +155,8 @@ const Writing = () => {
               {categoryList.map((item, index) => (
                 <St.RadioBoxContainer key={index}>
                   <St.RadioBoxInput />
-                  <St.RadioBoxSpan onClick={() => handleCategoryClick(item, index)} selected={selectedCategory === index}>
-                    {item}
+                  <St.RadioBoxSpan onClick={() => handleCategoryClick(item.categoryID, index)} selected={selectedCategory === index}>
+                    {item.name}
                   </St.RadioBoxSpan>
                 </St.RadioBoxContainer>
               ))}
