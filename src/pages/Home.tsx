@@ -9,11 +9,13 @@ import {styled} from 'styled-components';
 import {useNavigate} from 'react-router-dom';
 import {useQuery} from 'react-query';
 import { useState } from 'react';
+import {LocationModalState} from '../atom/LocationModal';
+import {useRecoilState} from 'recoil';
 export default function Home() {
 
   // 모달
 
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useRecoilState(LocationModalState);
   
   function handleModalClose() {
     setShowModal(false);
@@ -138,7 +140,7 @@ ModalButton: styled.button`
   margin-top: 2rem;
   width: 17rem;
   height: 3rem;
-  
+
   ${({ theme }) => theme.fonts.body07};
   background-color: ${({ theme }) => theme.colors.Main}; 
   border: none;
