@@ -12,6 +12,7 @@ import Class from "./pages/Class";
 import Writing from "./pages/Writing";
 import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 export default function Router() {
     return (
@@ -29,7 +30,7 @@ export default function Router() {
           <Route path="/class" element={<Class/>} />
           <Route path="/writing" element={<Writing/>} />
           <Route path="/profile" element={<ProfilePage/>} />
-          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </BrowserRouter>
     );
