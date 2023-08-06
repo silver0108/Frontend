@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import TopBar from '../components/common/TopBar';
+import TopBar2 from '../components/common/TopBar2';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { UserInfoState } from '../atom/UserInfo';
@@ -113,7 +113,7 @@ const Writing = () => {
   
   return (
     <St.WritingWrapper>
-      <TopBar message="재능 공유 글쓰기"/>
+      <TopBar2 message="재능 공유 글쓰기"/>
       
       <St.WritingContainer>
         <St.WritingBox>
@@ -217,12 +217,11 @@ const St = {
   WritingWrapper: styled.div`
     width: 100%;
     heigth: 100%;
-    margin: 0;
-    
-    display: flex;
+
+    // display: flex;
     //justify-content: center;
     //align-items: center;
-    flex-direction: column;
+    // flex-direction: column;
   `,
   WritingContainer: styled.div`
     //width: 100%;
@@ -230,7 +229,7 @@ const St = {
     
     display: flex;
     flex-direction: column;
-    flex: 1;
+    // flex: 1;
 
     background-color: #F5F5F5;
   `,
