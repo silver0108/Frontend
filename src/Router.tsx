@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import AlarmList from './pages/AlarmList';
 import Alarm from './pages/Alarm';
+import AlarmList from './pages/AlarmList';
 import ArtPage from "./pages/ArtPage";
+import Chatting from './pages/Chatting';
 import Class from "./pages/Class";
 import CloseDistanceTeacherPage from "./pages/CloseDistanceTeacherPage";
 import ExercisePage from "./pages/ExercisePage";
@@ -13,8 +14,8 @@ import MusicPage from "./pages/MusicPage";
 import PopularTeacherPage from "./pages/PopularTeacherPage";
 import ProfilePage from "./pages/ProfilePage";
 import RecommendedTeacherPage from "./pages/RecommendedTeacherPage";
-import Writing from "./pages/Writing";
 import SignupPage from "./pages/SignupPage";
+import Writing from "./pages/Writing";
 
 export default function Router() {
     return (
@@ -35,6 +36,7 @@ export default function Router() {
           <Route path="/writing" element={<Writing/>} />
           <Route path="/profile" element={<ProfilePage/>} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/chatting" element={<Chatting />} />
         </Routes>
       </BrowserRouter>
     );
