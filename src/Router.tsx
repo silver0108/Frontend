@@ -16,6 +16,7 @@ import ProfilePage from "./pages/ProfilePage";
 import RecommendedTeacherPage from "./pages/RecommendedTeacherPage";
 import SignupPage from "./pages/SignupPage";
 import Writing from "./pages/Writing";
+import Setting from "./pages/Setting";
 
 export default function Router() {
     return (
@@ -38,6 +39,7 @@ export default function Router() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/chatting" element={<Chatting />} />
           <Route path="/chatting-detail" element={<ChattingDetail />} />
+          <Route path="/setting" element={<Setting />} />
         </Routes>
       </BrowserRouter>
     );

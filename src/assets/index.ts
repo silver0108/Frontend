@@ -33,3 +33,5 @@ export { ReactComponent as SearchIcon } from './icon/searchIcon.svg';
 export { ReactComponent as DefaultTeacherImg } from './image/defaultTeacherImg.svg';
 export { ReactComponent as DefaultProfileImg } from './image/defaultProfileImg.svg';
 
+export { ReactComponent as ArrowIcon } from './icon/arrowIcon.svg';
+
