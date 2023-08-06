@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import ChattingDetail from './pages/ChattingDetail';
 import Alarm from './pages/Alarm';
 import AlarmList from './pages/AlarmList';
 import ArtPage from "./pages/ArtPage";
@@ -37,6 +37,7 @@ export default function Router() {
           <Route path="/profile" element={<ProfilePage/>} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/chatting" element={<Chatting />} />
+          <Route path="/chatting-detail" element={<ChattingDetail />} />
         </Routes>
       </BrowserRouter>
     );

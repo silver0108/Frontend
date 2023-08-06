@@ -68,7 +68,7 @@ export default function Home() {
         {showModal && (
         <St.ModalWrapper>
           <St.ModalContent>
-            <St.ModalText>현재는 <span> 동작구 대방동 </span>에서만</St.ModalText>
+            <St.ModalText>현재는 <span> 분당구 판교동 </span>에서만</St.ModalText>
             <St.ModalText>서비스 이용이 가능합니다</St.ModalText>
             <St.ModalSmallText> 서비스 초기 단계이기에, </St.ModalSmallText> 
             <St.ModalSmallText> 특정 지역에서만 서비스 이용이 가능합니다. </St.ModalSmallText>
