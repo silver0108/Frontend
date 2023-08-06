@@ -1,60 +1,78 @@
 import styled from "styled-components";
-import { ReviewProps } from "../../types/ReviewData";
-import { StarIcon_1 } from "../../assets";
-
+import { DefaultProfileImg, StarIcon_1 } from "../../assets";
+import { ReviewProps } from "../../types/ReviewInfo";
 
 const Review = (props:ReviewProps) => {
-  const list = props.list;
-
   return (
-    <ReviewWrapper>
-      {list.map((review, index) => (
-        <St.ReviewContainer key={index}>
-          <St.ReviewProfile>
-            <img src={review.avatar}/>
-            <St.ReviewNickname>{review.nickname}</St.ReviewNickname>
-          </St.ReviewProfile>
-          <St.ReviewInfo>
-            <St.RatingContainer>
-              <StarIcon_1/>
-              <St.Rating>{review.rating}</St.Rating>
-            </St.RatingContainer>
-            <div>{review.contents}</div>
-          </St.ReviewInfo>
-        </St.ReviewContainer>
-      ))}
-    </ReviewWrapper>
+    <St.ReviewWrapper>
+      <St.ScrollableContainer>
+        {props.reviewlist.map((review, index) => (
+          <St.ReviewContainer key={index}>
+            <St.ReviewProfile>
+              {review.user.imageUrl === null ? (
+                <DefaultProfileImg/>
+              ):(
+                <St.ReviewUserImage src={review.user.imageUrl}/>
+              )}
+              <St.ReviewNickname>{review.user.username}</St.ReviewNickname>
+            </St.ReviewProfile>
+            <St.ReviewInfo>
+              {review.rating === null ? (
+                <St.NoRating>[ 평가 없음 ]</St.NoRating>
+              ):(
+                <St.RatingContainer>
+                  <StarIcon_1/>
+                  <St.Rating>{review.rating}</St.Rating>
+                </St.RatingContainer>
+              )}
+              
+              <St.ReviewContents>{review.contents}</St.ReviewContents>
+            </St.ReviewInfo>
+          </St.ReviewContainer>
+        ))}
+      </St.ScrollableContainer>
+    </St.ReviewWrapper>
   );
 };
 
 export default Review;
 
-const ReviewWrapper = styled.div`
-  width: 100%;
-  // height: 100vh;
-
-  white-space: pre-line;
-  
-`;
-
 const St = {
+  ReviewWrapper: styled.div`
+    width: 100%;
+
+    white-space: pre-line;
+  `,
+  ScrollableContainer: styled.div`
+    max-height: 33rem;
+
+    overflow-y: auto;
+  `,
   ReviewContainer: styled.div`
     display: flex;
     margin: 1rem; 
+
+
   `,
   ReviewProfile: styled.div`
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
+    flex-direction: column;
   `,
   ReviewInfo: styled.div`
     display: flex;
     flex-direction: column;
 
     margin: 0 1rem;
+  `,
+  ReviewUserImage: styled.img`
+    width: 6rem; 
+    height: 6rem;
+    
+    border-radius: 50%;
+    
+    object-fit: cover; /
   `,
   ReviewNickname: styled.div`
   ${({ theme }) => theme.fonts.body07};
@@ -67,6 +85,12 @@ const St = {
 
     ${({ theme }) => theme.fonts.body07};
   `,
+  NoRating: styled.div`
+    ${({ theme }) => theme.fonts.body07};
+  `,
   Rating: styled.div`
+  `,
+  ReviewContents: styled.div`
+    ${({ theme }) => theme.fonts.body07};
   `
 }
