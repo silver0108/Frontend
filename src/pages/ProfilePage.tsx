@@ -12,11 +12,9 @@ let uploadClassData:WritingInfoProps[] = [
   {
     title: '솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.',
     personnel: 3,
-    category: '운동',
-    tag: ['배드민턴', '8~12세', '정원 4명'],
-    appeal: '- 육상 운동 선수 출신\n\
-            - 10분 기본 체조\n\
-            - 엄격 X',
+    category: '기타',
+    tag: ['솜사탕'],
+    appeal: '- 쉬워요!',
     price: 15000
   },
   {
@@ -24,29 +22,26 @@ let uploadClassData:WritingInfoProps[] = [
     personnel: 2,
     category: '운동',
     tag: ['배드민턴', '8~12세', '정원 4명'],
-    appeal: '- 육상 운동 선수 출신\n\
-            - 10분 기본 체조\n\
+    appeal: '- 10분 기본 체조\n\
             - 엄격 X',
-    price: 15000
+    price: 20000
   },
   {
     title: '같이 빵 만들어볼까요?\n아이들에게 꿈같은 시간을 선물합니다.',
     personnel: 4,
-    category: '운동',
-    tag: ['배드민턴', '8~12세', '정원 4명'],
-    appeal: '- 육상 운동 선수 출신\n\
-            - 10분 기본 체조\n\
-            - 엄격 X',
-    price: 15000
+    category: '기타',
+    tag: ['제빵', '나이제한 없음'],
+    appeal: '- 맛있게 만들어봐요!\n\
+            - 만들어서 집에 가져갈 수 있어요!',
+    price: 25000
   },
   {
-    title: '배드민턴 쉽게 가르쳐드려요!',
-    personnel: 4,
-    category: '운동',
-    tag: ['배드민턴', '8~12세', '정원 4명'],
-    appeal: '- 육상 운동 선수 출신\n\
-            - 10분 기본 체조\n\
-            - 엄격 X',
+    title: '영어 배우러 오세요~',
+    personnel: 6,
+    category: '언어',
+    tag: ['영어', '원어민'],
+    appeal: '- 영어 어렵지 않아요.\n\
+            - 재밌게 배워봐요',
     price: 15000
   }
 ]
@@ -54,31 +49,31 @@ let uploadClassData:WritingInfoProps[] = [
 let applyClassData:ApplyClassInfoProps[] = [
   {
     avatar: "img/profile_default.png",
-    nickname: "실버",
+    nickname: "살구 아빠",
     rating: 4.5,
-    title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
+    title: "축구도 하고, 친구도 사귀는 일석이조 수업입니다!",
     distance: 232
   }, 
   {
-    avatar: "img/profile_default.png",
-    nickname: "골드",
-    rating: 1.7,
-    title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
-    distance: 232
+    avatar: "img/profile1.png",
+    nickname: "혜인 엄마",
+    rating: 4.2,
+    title: "애니메이션을 자막 없이 볼수 있게!\n 생생한 일본어 교실",
+    distance: 330
   },
   {
     avatar: "img/profile_default.png",
-    nickname: "실버",
-    rating: 4.5,
+    nickname: "민지 아빠",
+    rating: 4.0,
     title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
     distance: 232
   }, 
   {
-    avatar: "img/profile_default.png",
-    nickname: "골드",
-    rating: 1.7,
-    title: "솜사탕 같이 만들어볼까요?\n 아이들에게 꿈같은 시간을 선물합니다.",
-    distance: 232
+    avatar: "img/profile2.png",
+    nickname: "주희 엄마",
+    rating: 3.9,
+    title: "중국 현지에 있는 것처럼 현실감있는 중국어 교실",
+    distance: 458
   }];
 
 export default function ProfilePage() {

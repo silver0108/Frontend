@@ -17,7 +17,7 @@ export default function MyApplyClass(props:ApplyClassProps) {
         <St.ScrollableContainer>
         {list.map((lecture, index) => (
           <St.MyApplyClassContainer key={index} onClick={() => navigate('/class')}>
-            <TeacherImg/>
+            <img src={lecture.avatar}></img>
             <St.ContentsContainer>
               <St.Title>{lecture.title}</St.Title>
               <St.InfoContainer>

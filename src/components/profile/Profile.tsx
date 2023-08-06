@@ -35,7 +35,7 @@ export default function Profile() {
         </St.InfoContainer>
         <St.InfoContainer style={{borderRight: "1px solid #E6E6E6", borderLeft: "1px solid #E6E6E6"}}>
           <St.ValueContainer>
-              12개
+              4개
           </St.ValueContainer>
           <St.KeyContainer>
             내가 올린 모아
@@ -43,7 +43,7 @@ export default function Profile() {
         </St.InfoContainer>
         <St.InfoContainer>
           <St.ValueContainer>
-              6개
+              4개
           </St.ValueContainer>
           <St.KeyContainer>
             내가 신청한 모아
