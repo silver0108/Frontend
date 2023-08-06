@@ -62,7 +62,7 @@ export default function Home() {
         {popular && <PopularLessonList props={popular} />}
         {teachers && <PopularTeacherList props={teachers} />}
         {distance && <CloseDistanceLessonList props={distance} />}
-        <BottomBar />
+        <BottomBar isWhere={"홈"}/>
         <St.WritingIc onClick = {()=> moveToWriting()}/>
 
         {showModal && (

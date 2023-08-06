@@ -15,7 +15,7 @@ export default function ChattingDetail() {
     return (
       <St.ChattingWrapper>
         <TopBar message = {"채팅하기"} />
-        <BottomBar />
+        <BottomBar isWhere={"채팅"}/>
       </St.ChattingWrapper>
     );
 }

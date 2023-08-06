@@ -129,7 +129,6 @@ export default function Chatting() {
     const navigate = useNavigate();
 
     function handleMoveToDetail() {
-        navigate('/chatting-detail');
     }
 
     return (
@@ -138,7 +137,7 @@ export default function Chatting() {
         {chattingList.map((lesson: LessonInfo, idx: number) => (
             <Teacher key={idx} {...lesson} onClick = {handleMoveToDetail}/>
         ))}
-        <BottomBar />
+        <BottomBar isWhere = {"채팅"}/>
       </St.ChattingWrapper>
     );
 }
