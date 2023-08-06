@@ -114,7 +114,7 @@ export default function ProfilePage() {
           <MyApplyClass list={applyClassData}/>
         )}
       </St.ProfilePageContainer>
-      <BottomBar/>
+      <BottomBar  isWhere={"프로필"}/>
     </St.ProfilePageWrapper>
   );
 }

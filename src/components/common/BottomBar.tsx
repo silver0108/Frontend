@@ -2,25 +2,29 @@ import {ChattingNotActiveIcon, HomeActiveIcon, ProfileNotActiveIcon, ChattingAct
 import { styled } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
+interface BottomBarProps {
+  isWhere: string;
+}
 
-export default function BottomBar() {
+export default function BottomBar(props: BottomBarProps) {
+
   const navigate = useNavigate();
 
   function handleMoveToHome() {
-    navigate(-1);
+    navigate('/home');
   }
   function handleMoveToChatting() {
-    navigate(-1);
+    navigate('/chatting');
   }
   function handleMoveToProfile() {
-    navigate(-1);
+    navigate('/profile');
   }
   return (
     <St.BottomBarWrapper>
         
-      <St.HomeActiveIc onClick={handleMoveToHome} />
-      <St.ChattingNotActiveIc onClick={handleMoveToChatting} />
-      <St.ProfileNotActiveIc onClick={handleMoveToProfile} />
+      {props.isWhere === "홈" ? <St.HomeActiveIc onClick={handleMoveToHome} /> : <St.HomeNotActiveIc onClick={handleMoveToHome} />}
+      {props.isWhere === "채팅" ? <St.ChattingActiveIc onClick={handleMoveToChatting} /> : <St.ChattingNotActiveIc onClick={handleMoveToChatting} />}
+      {props.isWhere === "프로필" ? <St.ProfileActiveIc onClick={handleMoveToProfile} /> : <St.ProfileNotActiveIc onClick={handleMoveToProfile} />}
 
     </St.BottomBarWrapper>
   );
@@ -37,7 +41,7 @@ const St = {
     bottom: 0;
 
     width: 100%;
-    height: 6rem;
+    height: 7rem;
     
     background-color: ${({theme})=> theme.colors.White};
     border-top: 1.5px solid ${({theme})=> theme.colors.Gray};

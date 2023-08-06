@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { styled } from "styled-components";
-import Modal from "../common/Modal";
-import { useRecoilState } from "recoil";
 import { ClassInfoState } from "../../atom/ClassInfo";
+import Modal from "../common/Modal";
+import { styled } from "styled-components";
+import { useRecoilState } from "recoil";
+import { useState } from "react";
 
 export default function ParentParticipation() {
   const [data, setData] = useRecoilState(ClassInfoState);
@@ -51,12 +51,12 @@ export default function ParentParticipation() {
         {isApplied === "true" && modalType === "apply" ? (
           <>
             <St.MainContents>수업이 신청되었습니다!</St.MainContents>
-            <St.SubContents>ㅎㅎ 선생님 수업 신청 완료</St.SubContents>
+            <St.SubContents> 수업 신청이 완료되었습니다.</St.SubContents>
             <StConfirmButton onClick={handleCloseModal}>확인</StConfirmButton>
           </>
         ) : (
           <>
-            <St.MainContents>수업을 취소하시겠습니까?!</St.MainContents>
+            <St.MainContents>수업을 취소하시겠습니까?</St.MainContents>
             <St.SubContents>선착순으로 조기마감 될 수 있어요.</St.SubContents>
             <St.ButtonContainer>
               <StCancelButton onClick={handleCloseModal}>아니요</StCancelButton>

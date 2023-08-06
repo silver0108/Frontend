@@ -3,7 +3,12 @@ import {LessonInfo} from '../../types/LessonInfo';
 import { StarIcon } from '../../assets';
 import { styled } from 'styled-components';
 
-export default function Teacher(props: LessonInfo) {
+interface TeacherProps extends LessonInfo {
+    onClick?: () => void; 
+}
+
+  
+export default function Teacher(props: TeacherProps) {
 
     let gender;
 
