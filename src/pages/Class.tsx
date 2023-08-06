@@ -1,40 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from "styled-components";
-
 import ProfileInfo from "../components/class/ProfileInfo";
 import ClassAppeal from "../components/class/ClassAppeal";
 import Review from "../components/class/Review";
 import ParticipationInfo from "../components/class/ParticipationInfo";
-import { ProfileInfoProps } from "../types/ProfileData";
-import { WritingInfoProps } from "../types/WritingData";
-import { ReviewInfoProps } from '../types/ReviewData';
 import TopBar from '../components/common/TopBar';
-
-let reviewData:ReviewInfoProps[] = [
-  {
-    avatar: "img/profile_default.png",
-    nickname: "실버",
-    rating: 4.5,
-    contents: "정말 멋진 선생님입니다.\n 수업목적에 맞추어 ~",
-  }, 
-  {
-    avatar: "img/profile_default.png",
-    nickname: "골드",
-    rating: 1.7,
-    contents: "싫어요",
-  },
-  {
-    avatar: "img/profile_default.png",
-    nickname: "실버",
-    rating: 4.5,
-    contents: "좋아요",
-  }, 
-  {
-    avatar: "img/profile_default.png",
-    nickname: "골드",
-    rating: 1.7,
-    contents: "별로에요... 다신 안들어요.",
-  }];
+import { ReviewInfo } from '../types/ReviewInfo';
 
 const Profile = () => {
   const [activeButton, setActiveButton] = useState<number>(0);
@@ -42,6 +13,22 @@ const Profile = () => {
   const handleButtonClick = (buttonIndex: number) => {
     setActiveButton(buttonIndex);
   }
+  const [reviewList, setReviewList] = useState<ReviewInfo[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/reviews`);
+        const responseData = await response.json();
+
+        setReviewList(responseData);
+        
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <St.ProfileWrapper>
@@ -57,14 +44,14 @@ const Profile = () => {
           <St.ProfileContentsButton 
             active={(activeButton === 1).toString()}
             onClick={() => handleButtonClick(1)}>
-            후기 ({reviewData.length})
+            후기 ( {reviewList.length} )
             </St.ProfileContentsButton>
         </St.ProfileContentsButtonContainer>
         {activeButton === 0 && (
           <ClassAppeal></ClassAppeal>
         )}
         {activeButton === 1 && (
-          <Review list={reviewData}></Review>
+          <Review reviewlist={reviewList}></Review>
         )}
       </St.ProfileContainer>
       <ParticipationInfo></ParticipationInfo>
