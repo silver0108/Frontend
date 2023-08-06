@@ -216,25 +216,18 @@ export default Writing;
 const St = {
   WritingWrapper: styled.div`
     width: 100%;
-    heigth: 100%;
 
-    // display: flex;
-    //justify-content: center;
-    //align-items: center;
-    // flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr;
   `,
   WritingContainer: styled.div`
-    //width: 100%;
-    //heigth: 100%;
-    
     display: flex;
     flex-direction: column;
-    // flex: 1;
+    flex: 1;
 
     background-color: #F5F5F5;
   `,
   WritingBox: styled.div`
-    //width: 100%;
     padding: 0 1.5rem;
   `,
   WritingSection: styled.div`
