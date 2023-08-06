@@ -1,14 +1,16 @@
 import { styled } from 'styled-components';
 import { UploadClassProps, WritingInfoProps } from '../../types/WritingData';
 import NoContents from './NoContents';
-
+import {useNavigate} from 'react-router-dom';
 export default function MyUploadClass(props:UploadClassProps) {
 
   const list = props.list;
   const num = 2;
 
+  const navigate = useNavigate();
+
   const handleStartLecture = () => {
-    alert("시작")
+    navigate("/chatting");
   }
 
   const handleDeleteLecture = () => {
