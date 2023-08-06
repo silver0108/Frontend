@@ -1,9 +1,10 @@
-import { styled } from 'styled-components';
-import NoContents from './NoContents';
-import { ReviewProps } from '../../types/ReviewData';
-import { ApplyClassProps } from '../../types/WritingData';
 import { DistanceIcon, StarIcon_1, TeacherImg } from '../../assets';
+
+import { ApplyClassProps } from '../../types/WritingData';
+import NoContents from './NoContents';
+import { styled } from 'styled-components';
 import { useNavigate } from 'react-router';
+
 export default function MyApplyClass(props:ApplyClassProps) {
   const list = props.list;
 

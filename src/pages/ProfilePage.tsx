@@ -1,13 +1,12 @@
-import { styled } from "styled-components";
-import TopBar from "../components/common/TopBar";
-import { useState } from "react";
-import MyUploadClass from "../components/profile/MyUploadClass";
-import MyApplyClass from "../components/profile/MyApplyClass";
-import Profile from "../components/profile/Profile";
-import BottomBar from "../components/common/BottomBar";
 import { ApplyClassInfoProps, UploadClassProps, WritingInfoProps } from "../types/WritingData";
-import { ReviewInfoProps } from "../types/ReviewData";
 
+import BottomBar from "../components/common/BottomBar";
+import MyApplyClass from "../components/profile/MyApplyClass";
+import MyUploadClass from "../components/profile/MyUploadClass";
+import Profile from "../components/profile/Profile";
+import TopBar from "../components/common/TopBar";
+import { styled } from "styled-components";
+import { useState } from "react";
 
 let uploadClassData:WritingInfoProps[] = [
   {
