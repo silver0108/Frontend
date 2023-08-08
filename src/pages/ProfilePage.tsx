@@ -18,10 +18,10 @@ let uploadClassData:WritingInfoProps[] = [
     price: 15000
   },
   {
-    title: '배드민턴 쉽게 가르쳐드려요!',
+    title: '즐겁게 공부하는 영어교실',
     personnel: 2,
-    category: '운동',
-    tag: ['배드민턴', '8~12세', '정원 4명'],
+    category: '언어',
+    tag: ['영어', '8~12세', '정원 4명'],
     appeal: '- 10분 기본 체조\n\
             - 엄격 X',
     price: 20000
