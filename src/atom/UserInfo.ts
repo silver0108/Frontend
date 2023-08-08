@@ -1,4 +1,7 @@
 import { atom } from 'recoil';
+import { recoilPersist } from 'recoil-persist';
+
+const { persistAtom } = recoilPersist();
 
 export const UserInfoState = atom({
   key: 'UserInfoState',
@@ -12,4 +15,5 @@ export const UserInfoState = atom({
     imageUrl: null,
     rating: null,
   },
+  effects_UNSTABLE: [persistAtom],
 })
