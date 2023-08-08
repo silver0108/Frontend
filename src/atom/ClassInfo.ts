@@ -1,5 +1,8 @@
 import {LessonInfo} from '../types/LessonInfo';
 import { atom } from "recoil";
+import { recoilPersist } from 'recoil-persist';
+
+const { persistAtom } = recoilPersist();
 
 export const ClassInfoState = atom<LessonInfo>({
     key: 'ClassInfoState',
@@ -30,5 +33,6 @@ export const ClassInfoState = atom<LessonInfo>({
             subCategory: "",
             imageUrl: null,
         }
-    }
+    },
+    effects_UNSTABLE: [persistAtom],
 })
