@@ -36,6 +36,15 @@
 ![알림 및 프로필](https://github.com/silver0108/MOAMOA-FE/assets/78434676/f937f37b-aa83-45a1-ab22-de9c27ea43b2)
 <br><br>
 
+## 시연 영상
+<img src="https://github.com/silver0108/MOAMOA-FE/assets/78434676/79e58c29-0258-4226-9084-b057fec84460" alt="홈" width="40%"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/silver0108/MOAMOA-FE/assets/78434676/0393fa70-ddab-4ed3-9265-534455bee692" alt="돌봄이 수업" width="40%"/>
+<img src="https://github.com/silver0108/MOAMOA-FE/assets/78434676/7b15c1af-62f0-4939-a1ab-eb7b24c2a26a" alt="글 작성" width="40%"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/silver0108/MOAMOA-FE/assets/78434676/fa7b1e21-7057-4aaa-8458-6d6604c843d8" alt="프로필" width="40%"/>
+<img src="https://github.com/silver0108/MOAMOA-FE/assets/78434676/230dae1a-5a2f-48da-b567-32fdf69a175d" alt="로그인" width="40%"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://github.com/silver0108/MOAMOA-FE/assets/78434676/e56efa4d-0538-435a-9ffa-2682c4171d1e" alt="회원가입" width="40%"/>
+<br><br>
+
 ## 팀원
 ![image](https://github.com/silver0108/MOAMOA-FE/assets/78434676/486de23d-c692-4005-ba29-700423057033)
 <br><br>
@@ -44,4 +53,4 @@
 ![image](https://github.com/silver0108/MOAMOA-FE/assets/78434676/7e083133-f55b-430c-8d15-4cb860c4e36d)
 <br/><br/>
 
-(+ 기획자님의 지인 개발자님께 도움을 받아 백엔드 연동하였습니다.)
+(+ 기획자님의 지인 개발자분께 도움을 받아 백엔드와 연동하였습니다.)
